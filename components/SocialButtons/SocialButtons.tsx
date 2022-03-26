@@ -87,7 +87,6 @@ export function SocialButtons() {
         Follow on Twitter
       </TwitterButton>
       <FacebookButton>Sign in with Facebook</FacebookButton>
-      <GithubButton>Login with GitHub</GithubButton>
       <DiscordButton>Join Discord community</DiscordButton>
     </Group>
   );
