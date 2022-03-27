@@ -15,9 +15,7 @@ const Home: NextPage = () => {
         </title>
       </Head>
 
-      <Center>
-        <AuthenticationForm />
-      </Center>
+      <Center>Home page honey</Center>
     </>
   );
 };

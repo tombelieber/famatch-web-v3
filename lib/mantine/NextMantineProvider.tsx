@@ -3,6 +3,7 @@ import {
   ColorSchemeProvider,
   MantineProvider,
 } from "@mantine/core";
+import { ModalsProvider } from "@mantine/modals";
 import { setCookies } from "cookies-next";
 import { FC, useCallback, useState } from "react";
 
@@ -44,7 +45,7 @@ const NextMantineProvider: FC<NextMantineProviderProps> = ({
             primaryColor: "yellow",
           }}
         >
-          {children}
+          <ModalsProvider>{children}</ModalsProvider>
         </MantineProvider>
       </ColorSchemeProvider>
     </>

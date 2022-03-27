@@ -43,15 +43,7 @@ export function AuthenticationForm(props: PaperProps<"div">) {
   });
 
   return (
-    <Paper
-      radius="md"
-      p="xl"
-      withBorder
-      {...props}
-      sx={(theme) => ({
-        [`@media (min-width: ${theme.breakpoints.xs}px)`]: { width: 420 },
-      })}
-    >
+    <Paper radius="md" p="xl" withBorder {...props}>
       <Text size="lg" weight={500}>
         {formatMessage(messages["authentication.form.title"], { type })}
       </Text>

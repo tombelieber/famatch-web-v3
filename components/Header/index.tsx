@@ -9,12 +9,14 @@ import {
   Text,
 } from "@mantine/core";
 import { upperFirst } from "@mantine/hooks";
+import { useModals } from "@mantine/modals";
 import { NextLink } from "@mantine/next";
 import { useRouter } from "next/router";
 import { useIntl } from "react-intl";
 import { ChevronDown } from "tabler-icons-react";
 import { HeaderLink } from "../../lib/common/constant";
 import messages from "../../lib/i18n/messages";
+import { AuthenticationForm } from "../Auth/AuthenticationForm";
 import { ColorSchemeToggle } from "../ColorScheme/ColorSchemeToggle";
 import { FamatchLogo } from "../shared/FamatchLogo";
 
@@ -78,6 +80,17 @@ export function HeaderAction({ links }: HeaderActionProps) {
   const { classes } = useStyles();
   const { formatMessage } = useIntl();
   const { pathname } = useRouter();
+  const modals = useModals();
+
+  const openAuthModal = () => {
+    modals.openModal({
+      withCloseButton: false,
+      padding: 0,
+      centered: true,
+      children: <AuthenticationForm />,
+    });
+  };
+
   const items = links.map((link) => {
     const menuItems = link.sublinks?.map((item) => (
       <Menu.Item key={item.pathname}>{formatMessage(item.label)}</Menu.Item>
@@ -139,7 +152,12 @@ export function HeaderAction({ links }: HeaderActionProps) {
           noWrap
         >
           <ColorSchemeToggle />
-          <Button radius="xl" size="md" sx={{ height: 30 }}>
+          <Button
+            radius="xl"
+            size="md"
+            sx={{ height: 30 }}
+            onClick={openAuthModal}
+          >
             {upperFirst(formatMessage(messages["authentication.form.login"]))}
           </Button>
         </Group>
