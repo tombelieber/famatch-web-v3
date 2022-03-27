@@ -41,26 +41,6 @@
       "value": "register"
     }
   ],
-  "cftXCC": [
-    {
-      "type": 0,
-      "value": "Welcome to Mantine, "
-    },
-    {
-      "type": 1,
-      "value": "type"
-    },
-    {
-      "type": 0,
-      "value": " with"
-    }
-  ],
-  "greeting": [
-    {
-      "type": 0,
-      "value": "Good Morning"
-    }
-  ],
   "sQnzu7": [
     {
       "type": 0,
@@ -71,6 +51,20 @@
     {
       "type": 0,
       "value": "name"
+    }
+  ],
+  "t+0nKk": [
+    {
+      "type": 0,
+      "value": "Welcome to Famatch.io, "
+    },
+    {
+      "type": 1,
+      "value": "type"
+    },
+    {
+      "type": 0,
+      "value": " with"
     }
   ],
   "tAiItl": [

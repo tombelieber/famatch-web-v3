@@ -2,7 +2,7 @@ import { defineMessages } from "react-intl";
 
 const messages = defineMessages({
   "authentication.form.title": {
-    defaultMessage: "Welcome to Mantine, {type} with",
+    defaultMessage: "Welcome to Famatch.io, {type} with",
   },
   "authentication.form.or_span": { defaultMessage: "Or continue with email" },
   "authentication.form.login": { defaultMessage: "login" },

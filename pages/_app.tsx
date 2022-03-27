@@ -1,12 +1,11 @@
-import English from "../content/compiled-locales/en.json";
-import Chinese from "../content/compiled-locales/zh.json";
-
 import { MantineProvider } from "@mantine/core";
 import { AppProps } from "next/app";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useMemo } from "react";
-import { IntlProvider, FormattedMessage } from "react-intl";
+import { IntlProvider } from "react-intl";
+import English from "../content/compiled-locales/en.json";
+import Chinese from "../content/compiled-locales/zh.json";
 
 export default function App(props: AppProps) {
   const { Component, pageProps } = props;
@@ -39,8 +38,7 @@ export default function App(props: AppProps) {
         withGlobalStyles
         withNormalizeCSS
         theme={{
-          /** Put your mantine theme override here */
-          colorScheme: "light",
+          /** Put your mantine theme override here */ colorScheme: "light",
         }}
       >
         <IntlProvider
@@ -48,7 +46,6 @@ export default function App(props: AppProps) {
           messages={messages}
           onError={() => null}
         >
-          <FormattedMessage defaultMessage="Good Morning" id="greeting" />
           <Component {...pageProps} />
         </IntlProvider>
       </MantineProvider>

@@ -60,7 +60,9 @@ export function AuthenticationForm(props: PaperProps<"div">) {
         <Group direction="column" grow>
           {type === REGISTER && (
             <TextInput
-              label={formatMessage(messages["authentication.form.name"])}
+              label={upperFirst(
+                formatMessage(messages["authentication.form.name"]),
+              )}
               placeholder={formatMessage(
                 messages["authentication.form.name_placeholder"],
               )}
@@ -73,7 +75,9 @@ export function AuthenticationForm(props: PaperProps<"div">) {
 
           <TextInput
             required
-            label={formatMessage(messages["authentication.form.email"])}
+            label={upperFirst(
+              formatMessage(messages["authentication.form.email"]),
+            )}
             placeholder="hello@mantine.dev"
             value={form.values.email}
             onChange={(event) =>
@@ -87,7 +91,9 @@ export function AuthenticationForm(props: PaperProps<"div">) {
 
           <PasswordInput
             required
-            label={formatMessage(messages["authentication.form.password"])}
+            label={upperFirst(
+              formatMessage(messages["authentication.form.password"]),
+            )}
             placeholder={formatMessage(
               messages["authentication.form.password_placeholder"],
             )}

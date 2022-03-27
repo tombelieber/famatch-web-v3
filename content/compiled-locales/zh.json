@@ -41,16 +41,6 @@
       "value": "註冊"
     }
   ],
-  "cftXCC": [
-    {
-      "type": 0,
-      "value": "歡迎來到Famatch.io，"
-    },
-    {
-      "type": 1,
-      "value": "type"
-    }
-  ],
   "sQnzu7": [
     {
       "type": 0,
@@ -61,6 +51,16 @@
     {
       "type": 0,
       "value": "名字"
+    }
+  ],
+  "t+0nKk": [
+    {
+      "type": 0,
+      "value": "歡迎來到Famatch.io，"
+    },
+    {
+      "type": 1,
+      "value": "type"
     }
   ],
   "tAiItl": [
