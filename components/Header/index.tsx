@@ -116,7 +116,7 @@ export function HeaderAction({ links }: HeaderActionProps) {
 
   return (
     <Header height={HEADER_HEIGHT}>
-      <Container className={classes.inner} fluid>
+      <Container className={classes.inner} size="xl">
         <Group>
           <Burger
             opened={opened}
