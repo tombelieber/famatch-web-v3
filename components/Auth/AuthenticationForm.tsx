@@ -40,7 +40,15 @@ export function AuthenticationForm(props: PaperProps<"div">) {
   });
 
   return (
-    <Paper radius="md" p="xl" withBorder {...props}>
+    <Paper
+      radius="md"
+      p="xl"
+      withBorder
+      {...props}
+      sx={(theme) => ({
+        [`@media (min-width: ${theme.breakpoints.sm}px)`]: { width: 420 },
+      })}
+    >
       <Text size="lg" weight={500}>
         {formatMessage(messages["authentication.form.title"], { type })}
       </Text>
@@ -90,6 +98,8 @@ export function AuthenticationForm(props: PaperProps<"div">) {
           />
 
           <PasswordInput
+            id="auth-pw"
+            autoComplete="on"
             required
             label={upperFirst(
               formatMessage(messages["authentication.form.password"]),
