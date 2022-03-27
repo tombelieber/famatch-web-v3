@@ -1,5 +1,4 @@
 import {
-  Burger,
   Button,
   Center,
   Container,
@@ -9,7 +8,7 @@ import {
   Menu,
   Text,
 } from "@mantine/core";
-import { upperFirst, useBooleanToggle } from "@mantine/hooks";
+import { upperFirst } from "@mantine/hooks";
 import { NextLink } from "@mantine/next";
 import { useRouter } from "next/router";
 import { useIntl } from "react-intl";
@@ -27,9 +26,13 @@ const useStyles = createStyles((theme) => ({
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
+
+    [theme.fn.smallerThan("sm")]: {
+      justifyContent: "center",
+    },
   },
 
-  links: {
+  hide_in_sm: {
     [theme.fn.smallerThan("sm")]: {
       display: "none",
     },
@@ -75,7 +78,6 @@ export function HeaderAction({ links }: HeaderActionProps) {
   const { classes } = useStyles();
   const { formatMessage } = useIntl();
   const { pathname } = useRouter();
-  const [opened, toggleOpened] = useBooleanToggle(false);
   const items = links.map((link) => {
     const menuItems = link.sublinks?.map((item) => (
       <Menu.Item key={item.pathname}>{formatMessage(item.label)}</Menu.Item>
@@ -123,23 +125,20 @@ export function HeaderAction({ links }: HeaderActionProps) {
     <Header height={HEADER_HEIGHT}>
       <Container className={classes.inner} size="xl">
         <Group>
-          <Burger
-            opened={opened}
-            onClick={() => toggleOpened()}
-            className={classes.burger}
-            size="sm"
-          />
           <FamatchLogo />
         </Group>
 
-        <Group spacing={24} className={classes.links} position="center">
+        <Group spacing={24} className={classes.hide_in_sm} position="center">
           {items}
         </Group>
 
-        <Group spacing={24} position="right" noWrap>
-          <div className={classes.links}>
-            <ColorSchemeToggle />
-          </div>
+        <Group
+          className={classes.hide_in_sm}
+          spacing={24}
+          position="right"
+          noWrap
+        >
+          <ColorSchemeToggle />
           <Button radius="xl" size="md" sx={{ height: 30 }}>
             {upperFirst(formatMessage(messages["authentication.form.login"]))}
           </Button>
