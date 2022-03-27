@@ -7,9 +7,10 @@ import {
 } from "@mantine/core";
 import { useRouter } from "next/router";
 import { FC, useState } from "react";
+import { useIntl } from "react-intl";
 import { LanguageHiragana, MoonStars, Sun } from "tabler-icons-react";
+import messages from "../../lib/i18n/messages";
 import ColorSchemeToggleSwitch from "../ColorScheme/ColorSchemeToggleSwitch";
-
 import SettingListItem from "./SettingListItem";
 
 const localeOptions = [
@@ -20,6 +21,7 @@ const localeOptions = [
 type SettingPanelProps = {};
 
 const SettingPanel: FC<SettingPanelProps> = () => {
+  const { formatMessage } = useIntl();
   const { colorScheme } = useMantineColorScheme();
   const router = useRouter();
   const { pathname, asPath, query } = router;
@@ -43,10 +45,13 @@ const SettingPanel: FC<SettingPanelProps> = () => {
       {/* use group instead */}
       <Container size="sm">
         <Title sx={(theme) => ({ marginBottom: theme.spacing.xl })}>
-          Settings
+          {formatMessage(messages["setting.title"])}
         </Title>
         <Group direction="column" grow>
-          <SettingListItem icon={<LanguageHiragana />} text="語言">
+          <SettingListItem
+            icon={<LanguageHiragana />}
+            text={formatMessage(messages["setting.language"])}
+          >
             <Select
               sx={{ width: 120 }}
               data={localeOptions}
@@ -63,7 +68,8 @@ const SettingPanel: FC<SettingPanelProps> = () => {
                 <MoonStars size={24} />
               )
             }
-            text="主題顏色"
+            // text="主題顏色"
+            text={formatMessage(messages["setting.theme_mode"])}
           >
             <ColorSchemeToggleSwitch />
           </SettingListItem>

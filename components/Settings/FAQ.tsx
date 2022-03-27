@@ -1,5 +1,7 @@
 import React from "react";
 import { Container, Title, Accordion, createStyles } from "@mantine/core";
+import { useIntl } from "react-intl";
+import messages from "../../lib/i18n/messages";
 
 const useStyles = createStyles((theme, _params, getRef) => {
   const control = getRef("control");
@@ -50,9 +52,12 @@ const placeholder =
 
 export function FaqSimple() {
   const { classes } = useStyles();
+  const { formatMessage } = useIntl();
   return (
     <Container size="sm" className={classes.wrapper}>
-      <Title className={classes.title}>Frequently Asked Questions</Title>
+      <Title className={classes.title}>
+        {formatMessage(messages["setting.faq_title"])}
+      </Title>
 
       <Accordion
         iconPosition="right"

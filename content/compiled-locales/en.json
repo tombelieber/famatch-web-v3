@@ -41,10 +41,22 @@
       "value": "Already have an account? Login"
     }
   ],
+  "QA1wrZ": [
+    {
+      "type": 0,
+      "value": "Frequently Asked Questions"
+    }
+  ],
   "QYBGib": [
     {
       "type": 0,
       "value": "register"
+    }
+  ],
+  "Xa2AXi": [
+    {
+      "type": 0,
+      "value": "Theme Mode"
     }
   ],
   "djJp6c": [
@@ -107,6 +119,12 @@
     {
       "type": 0,
       "value": "Rooms"
+    }
+  ],
+  "y1Z3or": [
+    {
+      "type": 0,
+      "value": "Language"
     }
   ],
   "yUVl6+": [

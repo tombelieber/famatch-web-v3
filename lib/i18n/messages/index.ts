@@ -1,6 +1,7 @@
 import { defineMessages } from "react-intl";
 
 const messages = defineMessages({
+  // authentication
   "authentication.form.title": {
     defaultMessage: "Welcome to Famatch.io, {type} with",
   },
@@ -26,11 +27,19 @@ const messages = defineMessages({
   },
   "authentication.form.dont_have_account": {
     defaultMessage: "Don't have an account? Register",
-  }, // header.links
+  },
+
+  // header
   "header.links.home": { defaultMessage: "Home" },
   "header.links.rooms": { defaultMessage: "Rooms" },
   "header.links.history": { defaultMessage: "History" },
   "header.links.settings": { defaultMessage: "Settings" },
+
+  // settings page
+  "setting.language": { defaultMessage: "Language" },
+  "setting.theme_mode": { defaultMessage: "Theme Mode" },
+  "setting.faq_title": { defaultMessage: "Frequently Asked Questions" },
+  "setting.title": { defaultMessage: "Settings" },
 });
 
 export default messages;
