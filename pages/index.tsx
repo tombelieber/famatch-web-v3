@@ -2,6 +2,8 @@ import { AppShell, Center, Header } from "@mantine/core";
 import type { NextPage } from "next";
 import Head from "next/head";
 import { AuthenticationForm } from "../components/Auth/AuthenticationForm";
+import { HeaderAction } from "../components/Header";
+import { headerLinks } from "../lib/common/constant";
 import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
@@ -20,11 +22,7 @@ const Home: NextPage = () => {
           //     {/* Navbar content */}
           //   </Navbar>
           // }
-          header={
-            <Header height={60} p="xs">
-              {/* Header content */}
-            </Header>
-          }
+          header={<HeaderAction links={headerLinks.links} />}
           styles={(theme) => ({
             main: {
               backgroundColor:

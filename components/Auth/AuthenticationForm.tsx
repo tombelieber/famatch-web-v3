@@ -13,7 +13,10 @@ import {
 import { upperFirst, useForm, useToggle } from "@mantine/hooks";
 import { useIntl } from "react-intl";
 import messages from "../../lib/i18n/messages";
-import { GoogleButton, TwitterButton } from "../SocialButtons/SocialButtons";
+import {
+  GoogleButton,
+  TwitterButton,
+} from "../shared/SocialButtons/SocialButtons";
 
 export function AuthenticationForm(props: PaperProps<"div">) {
   const { formatMessage } = useIntl();

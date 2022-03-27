@@ -25,7 +25,8 @@
     "next": "12.1.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-intl": "^5.24.8"
+    "react-intl": "^5.24.8",
+    "tabler-icons-react": "^1.41.0"
   },
   "devDependencies": {
     "@formatjs/cli": "^4.8.3",
