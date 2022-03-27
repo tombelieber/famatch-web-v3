@@ -1,4 +1,5 @@
 import {
+  AppShell,
   ColorScheme,
   ColorSchemeProvider,
   MantineProvider,
@@ -10,8 +11,10 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { useMemo, useState } from "react";
 import { IntlProvider } from "react-intl";
+import { HeaderAction } from "../components/Header";
 import English from "../content/compiled-locales/en.json";
 import Chinese from "../content/compiled-locales/zh.json";
+import { headerLinks } from "../lib/common/constant";
 
 export default function App(props: AppProps & { colorScheme: ColorScheme }) {
   const { Component, pageProps } = props;
@@ -67,7 +70,21 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
             messages={messages}
             onError={() => null}
           >
-            <Component {...pageProps} />
+            <AppShell
+              fixed
+              header={<HeaderAction links={headerLinks} />}
+              styles={(theme) => ({
+                main: {
+                  backgroundColor:
+                    theme.colorScheme === "dark"
+                      ? theme.colors.dark[8]
+                      : theme.colors.gray[0],
+                },
+              })}
+            >
+              {/* Your application here */}
+              <Component {...pageProps} />
+            </AppShell>
           </IntlProvider>
         </MantineProvider>
       </ColorSchemeProvider>

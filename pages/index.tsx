@@ -1,43 +1,13 @@
-import { AppShell, Center } from "@mantine/core";
+import { Center } from "@mantine/core";
 import type { NextPage } from "next";
-import Head from "next/head";
 import { AuthenticationForm } from "../components/Auth/AuthenticationForm";
-import { HeaderAction } from "../components/Header";
-import { headerLinks } from "../lib/common/constant";
-import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Home | Famatch.io</title>
-        <meta name="description" content="PAY LESS PLAY MORE" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main>
-        <AppShell
-          // navbar={
-          //   <Navbar width={{ base: 300 }} height={500} p="xs">
-          //     {/* Navbar content */}
-          //   </Navbar>
-          // }
-          header={<HeaderAction links={headerLinks} />}
-          styles={(theme) => ({
-            main: {
-              backgroundColor:
-                theme.colorScheme === "dark"
-                  ? theme.colors.dark[8]
-                  : theme.colors.gray[0],
-            },
-          })}
-        >
-          {/* Your application here */}
-          <Center>
-            <AuthenticationForm />
-          </Center>
-        </AppShell>
-      </main>
+    <>
+      <Center>
+        <AuthenticationForm />
+      </Center>
       {/* <footer className={styles.footer}>
         <a
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
@@ -50,7 +20,7 @@ const Home: NextPage = () => {
           </span>
         </a>
       </footer> */}
-    </div>
+    </>
   );
 };
 
