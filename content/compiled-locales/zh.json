@@ -1,8 +1,90 @@
 {
-  "greeting": [
+  "/CkSRc": [
     {
       "type": 0,
-      "value": "早安"
+      "value": "或以電郵繼續"
+    }
+  ],
+  "/aWpsO": [
+    {
+      "type": 0,
+      "value": "你的密碼"
+    }
+  ],
+  "2Zni1y": [
+    {
+      "type": 0,
+      "value": "沒有帳號？ 註冊"
+    }
+  ],
+  "ByuOj8": [
+    {
+      "type": 0,
+      "value": "這不是電郵喔！"
+    }
+  ],
+  "EHNQ95": [
+    {
+      "type": 0,
+      "value": "登入"
+    }
+  ],
+  "GzT4CO": [
+    {
+      "type": 0,
+      "value": "已有帳號？ 登入"
+    }
+  ],
+  "QYBGib": [
+    {
+      "type": 0,
+      "value": "註冊"
+    }
+  ],
+  "cftXCC": [
+    {
+      "type": 0,
+      "value": "歡迎來到Famatch.io，"
+    },
+    {
+      "type": 1,
+      "value": "type"
+    }
+  ],
+  "sQnzu7": [
+    {
+      "type": 0,
+      "value": "密碼"
+    }
+  ],
+  "sRTzEd": [
+    {
+      "type": 0,
+      "value": "名字"
+    }
+  ],
+  "tAiItl": [
+    {
+      "type": 0,
+      "value": "我接受使用者條款及隱私權政策"
+    }
+  ],
+  "ussyPl": [
+    {
+      "type": 0,
+      "value": "密碼應至少包含 6 個字符"
+    }
+  ],
+  "vlKhIl": [
+    {
+      "type": 0,
+      "value": "你的名字"
+    }
+  ],
+  "yUVl6+": [
+    {
+      "type": 0,
+      "value": "電郵"
     }
   ]
 }

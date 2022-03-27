@@ -1,21 +1,26 @@
-import React from "react";
-import { useForm, useToggle, upperFirst } from "@mantine/hooks";
 import {
-  TextInput,
+  Anchor,
+  Button,
+  Checkbox,
+  Divider,
+  Group,
+  Paper,
+  PaperProps,
   PasswordInput,
   Text,
-  Paper,
-  Group,
-  PaperProps,
-  Button,
-  Divider,
-  Checkbox,
-  Anchor,
+  TextInput,
 } from "@mantine/core";
+import { upperFirst, useForm, useToggle } from "@mantine/hooks";
+import { useIntl } from "react-intl";
+import messages from "../../lib/i18n/messages";
 import { GoogleButton, TwitterButton } from "../SocialButtons/SocialButtons";
 
 export function AuthenticationForm(props: PaperProps<"div">) {
-  const [type, toggle] = useToggle("login", ["login", "register"]);
+  const { formatMessage } = useIntl();
+  const LOGIN = formatMessage(messages["authentication.form.login"]);
+  const REGISTER = formatMessage(messages["authentication.form.register"]);
+
+  const [type, toggle] = useToggle(LOGIN, [LOGIN, REGISTER]);
   const form = useForm({
     initialValues: {
       email: "",
@@ -37,7 +42,7 @@ export function AuthenticationForm(props: PaperProps<"div">) {
   return (
     <Paper radius="md" p="xl" withBorder {...props}>
       <Text size="lg" weight={500}>
-        Welcome to Mantine, {type} with
+        {formatMessage(messages["authentication.form.title"], { type })}
       </Text>
 
       <Group grow mb="md" mt="md">
@@ -45,14 +50,20 @@ export function AuthenticationForm(props: PaperProps<"div">) {
         <TwitterButton radius="xl">Twitter</TwitterButton>
       </Group>
 
-      <Divider label="Or continue with email" labelPosition="center" my="lg" />
+      <Divider
+        label={formatMessage(messages["authentication.form.or_span"])}
+        labelPosition="center"
+        my="lg"
+      />
 
       <form onSubmit={form.onSubmit(() => {})}>
         <Group direction="column" grow>
-          {type === "register" && (
+          {type === REGISTER && (
             <TextInput
-              label="Name"
-              placeholder="Your name"
+              label={formatMessage(messages["authentication.form.name"])}
+              placeholder={formatMessage(
+                messages["authentication.form.name_placeholder"],
+              )}
               value={form.values.name}
               onChange={(event) =>
                 form.setFieldValue("name", event.currentTarget.value)
@@ -62,32 +73,37 @@ export function AuthenticationForm(props: PaperProps<"div">) {
 
           <TextInput
             required
-            label="Email"
+            label={formatMessage(messages["authentication.form.email"])}
             placeholder="hello@mantine.dev"
             value={form.values.email}
             onChange={(event) =>
               form.setFieldValue("email", event.currentTarget.value)
             }
-            error={form.errors.email && "Invalid email"}
+            error={
+              form.errors.email &&
+              formatMessage(messages["authentication.form.invalid_email"])
+            }
           />
 
           <PasswordInput
             required
-            label="Password"
-            placeholder="Your password"
+            label={formatMessage(messages["authentication.form.password"])}
+            placeholder={formatMessage(
+              messages["authentication.form.password_placeholder"],
+            )}
             value={form.values.password}
             onChange={(event) =>
               form.setFieldValue("password", event.currentTarget.value)
             }
             error={
               form.errors.password &&
-              "Password should include at least 6 characters"
+              formatMessage(messages["authentication.form.password_too_less"])
             }
           />
 
-          {type === "register" && (
+          {type === REGISTER && (
             <Checkbox
-              label="I accept terms and conditions"
+              label={formatMessage(messages["authentication.form.accept_tos"])}
               checked={form.values.terms}
               onChange={(event) =>
                 form.setFieldValue("terms", event.currentTarget.checked)
@@ -104,9 +120,13 @@ export function AuthenticationForm(props: PaperProps<"div">) {
             onClick={() => toggle()}
             size="xs"
           >
-            {type === "register"
-              ? "Already have an account? Login"
-              : "Don't have an account? Register"}
+            {type === REGISTER
+              ? formatMessage(
+                  messages["authentication.form.already_have_account"],
+                )
+              : formatMessage(
+                  messages["authentication.form.dont_have_account"],
+                )}
           </Anchor>
           <Button type="submit" onClick={onSubmit}>
             {upperFirst(type)}

@@ -1,8 +1,100 @@
 {
+  "/CkSRc": [
+    {
+      "type": 0,
+      "value": "Or continue with email"
+    }
+  ],
+  "/aWpsO": [
+    {
+      "type": 0,
+      "value": "Your password"
+    }
+  ],
+  "2Zni1y": [
+    {
+      "type": 0,
+      "value": "Don't have an account? Register"
+    }
+  ],
+  "ByuOj8": [
+    {
+      "type": 0,
+      "value": "Invalid email"
+    }
+  ],
+  "EHNQ95": [
+    {
+      "type": 0,
+      "value": "login"
+    }
+  ],
+  "GzT4CO": [
+    {
+      "type": 0,
+      "value": "Already have an account? Login"
+    }
+  ],
+  "QYBGib": [
+    {
+      "type": 0,
+      "value": "register"
+    }
+  ],
+  "cftXCC": [
+    {
+      "type": 0,
+      "value": "Welcome to Mantine, "
+    },
+    {
+      "type": 1,
+      "value": "type"
+    },
+    {
+      "type": 0,
+      "value": " with"
+    }
+  ],
   "greeting": [
     {
       "type": 0,
       "value": "Good Morning"
+    }
+  ],
+  "sQnzu7": [
+    {
+      "type": 0,
+      "value": "password"
+    }
+  ],
+  "sRTzEd": [
+    {
+      "type": 0,
+      "value": "name"
+    }
+  ],
+  "tAiItl": [
+    {
+      "type": 0,
+      "value": "I accept terms and conditions"
+    }
+  ],
+  "ussyPl": [
+    {
+      "type": 0,
+      "value": "Password should include at least 6 characters"
+    }
+  ],
+  "vlKhIl": [
+    {
+      "type": 0,
+      "value": "Your name"
+    }
+  ],
+  "yUVl6+": [
+    {
+      "type": 0,
+      "value": "email"
     }
   ]
 }
