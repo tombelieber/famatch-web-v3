@@ -14,16 +14,16 @@ const useStyles = createStyles((theme) => ({
     pointerEvents: "none",
     position: "absolute",
     zIndex: 1,
-    top: 3,
+    top: 6,
   },
 
   iconLight: {
-    left: 4,
+    left: 6,
     color: theme.white,
   },
 
   iconDark: {
-    right: 4,
+    right: 6,
     color: theme.colors.gray[6],
   },
 }));
@@ -41,7 +41,7 @@ const ColorSchemeToggleSwitch: FC<ColorSchemeToggleSwitchProps> = () => {
       <Switch
         checked={colorScheme === "dark"}
         onChange={() => toggleColorScheme()}
-        size="md"
+        size="lg"
       />
     </div>
   );

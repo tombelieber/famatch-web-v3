@@ -16,7 +16,10 @@ const SettingListItem: FC<SettingListItemProps> = ({
       <Paper
         radius="md"
         withBorder
-        sx={() => ({ backgroundColor: "transparent" })}
+        sx={() => ({
+          backgroundColor: "transparent",
+          height: 52,
+        })}
       >
         <Container
           py={8}
@@ -24,6 +27,7 @@ const SettingListItem: FC<SettingListItemProps> = ({
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
+            height: "100%",
           }}
         >
           <Group position="left">
