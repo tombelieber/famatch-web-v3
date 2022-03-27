@@ -7,9 +7,11 @@ import {
   Group,
   Header,
   Menu,
+  Text,
 } from "@mantine/core";
 import { upperFirst, useBooleanToggle } from "@mantine/hooks";
 import { NextLink } from "@mantine/next";
+import { useRouter } from "next/router";
 import { useIntl } from "react-intl";
 import { ChevronDown } from "tabler-icons-react";
 import { HeaderLink } from "../../lib/common/constant";
@@ -72,6 +74,7 @@ interface HeaderActionProps {
 export function HeaderAction({ links }: HeaderActionProps) {
   const { classes } = useStyles();
   const { formatMessage } = useIntl();
+  const { pathname } = useRouter();
   const [opened, toggleOpened] = useBooleanToggle(false);
   const items = links.map((link) => {
     const menuItems = link.sublinks?.map((item) => (
@@ -109,7 +112,9 @@ export function HeaderAction({ links }: HeaderActionProps) {
         href={link.pathname}
         className={classes.link}
       >
-        {formatMessage(link.label)}
+        <Text size="sm" weight={link.pathname === pathname ? "bold" : "normal"}>
+          {formatMessage(link.label)}
+        </Text>
       </NextLink>
     );
   });
