@@ -1,12 +1,14 @@
-import React from "react";
 import { Image, useMantineTheme } from "@mantine/core";
+import { NextLink } from "@mantine/next";
+import React from "react";
+import { ROUTES } from "../../lib/router/routes";
 
 interface MantineLogoProps extends React.ComponentPropsWithoutRef<"svg"> {
   variant?: "white" | "default";
   width?: number;
 }
 
-export function MantineLogo({
+export function FamatchLogo({
   variant = "default",
   width = 110,
   ...others
@@ -14,11 +16,14 @@ export function MantineLogo({
   const theme = useMantineTheme();
   return (
     <>
-      <Image
-        width={width}
-        src="/assets/logo/logo-fullname.png"
-        alt="Famatch.io"
-      />
+      <NextLink href={ROUTES.root}>
+        <Image
+          width={width}
+          src="/assets/logo/logo-fullname.png"
+          alt="Famatch.io"
+        />
+      </NextLink>
+
       {/* <svg
         {...others}
         xmlns="http://www.w3.org/2000/svg"

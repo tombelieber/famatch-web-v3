@@ -9,12 +9,13 @@ import {
   Menu,
 } from "@mantine/core";
 import { upperFirst, useBooleanToggle } from "@mantine/hooks";
+import { NextLink } from "@mantine/next";
 import { useIntl } from "react-intl";
 import { ChevronDown } from "tabler-icons-react";
 import { HeaderLink } from "../../lib/common/constant";
 import messages from "../../lib/i18n/messages";
 import { ColorSchemeToggle } from "../ColorSchemeToggle";
-import { MantineLogo } from "../shared/MantineLogo";
+import { FamatchLogo } from "../shared/FamatchLogo";
 
 const HEADER_HEIGHT = 60;
 
@@ -87,18 +88,14 @@ export function HeaderAction({ links }: HeaderActionProps) {
           placement="end"
           gutter={1}
           control={
-            <a
-              href={link.pathname}
-              className={classes.link}
-              onClick={(event) => event.preventDefault()}
-            >
+            <NextLink href={link.pathname} className={classes.link}>
               <Center>
                 <span className={classes.linkLabel}>
                   {formatMessage(link.label)}
                 </span>
                 <ChevronDown size={12} />
               </Center>
-            </a>
+            </NextLink>
           }
         >
           {menuItems}
@@ -107,14 +104,13 @@ export function HeaderAction({ links }: HeaderActionProps) {
     }
 
     return (
-      <a
+      <NextLink
         key={`anchor-${link.pathname}`}
         href={link.pathname}
         className={classes.link}
-        onClick={(event) => event.preventDefault()}
       >
         {formatMessage(link.label)}
-      </a>
+      </NextLink>
     );
   });
 
@@ -128,7 +124,7 @@ export function HeaderAction({ links }: HeaderActionProps) {
             className={classes.burger}
             size="sm"
           />
-          <MantineLogo />
+          <FamatchLogo />
         </Group>
 
         <Group spacing={24} className={classes.links} position="center">
