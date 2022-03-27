@@ -21,6 +21,7 @@
     "@mantine/next": "^4.0.8",
     "@mantine/notifications": "^4.0.8",
     "@mantine/rte": "^4.0.8",
+    "cookies-next": "^2.0.4",
     "dayjs": "^1.11.0",
     "next": "12.1.1",
     "react": "17.0.2",

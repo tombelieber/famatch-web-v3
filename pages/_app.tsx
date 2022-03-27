@@ -1,17 +1,37 @@
-import { MantineProvider } from "@mantine/core";
+import {
+  ColorScheme,
+  ColorSchemeProvider,
+  MantineProvider,
+} from "@mantine/core";
+import { getCookie, setCookies } from "cookies-next";
+import { GetServerSidePropsContext } from "next";
 import { AppProps } from "next/app";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { IntlProvider } from "react-intl";
 import English from "../content/compiled-locales/en.json";
 import Chinese from "../content/compiled-locales/zh.json";
 
-export default function App(props: AppProps) {
+export default function App(props: AppProps & { colorScheme: ColorScheme }) {
   const { Component, pageProps } = props;
 
   const { locale } = useRouter();
   const [shortLocale] = locale ? locale.split("-") : ["en"];
+
+  const [colorScheme, setColorScheme] = useState<ColorScheme>(
+    props.colorScheme,
+  );
+
+  const toggleColorScheme = (value?: ColorScheme) => {
+    const nextColorScheme =
+      value || (colorScheme === "dark" ? "light" : "dark");
+    setColorScheme(nextColorScheme);
+    // when color scheme is updated save it to cookie
+    setCookies("mantine-color-scheme", nextColorScheme, {
+      maxAge: 60 * 60 * 24 * 30,
+    });
+  };
 
   const messages = useMemo(() => {
     switch (shortLocale) {
@@ -33,22 +53,29 @@ export default function App(props: AppProps) {
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
       </Head>
-
-      <MantineProvider
-        withGlobalStyles
-        withNormalizeCSS
-        theme={{
-          /** Put your mantine theme override here */ colorScheme: "light",
-        }}
+      <ColorSchemeProvider
+        colorScheme={colorScheme}
+        toggleColorScheme={toggleColorScheme}
       >
-        <IntlProvider
-          locale={shortLocale}
-          messages={messages}
-          onError={() => null}
+        <MantineProvider
+          withGlobalStyles
+          withNormalizeCSS
+          theme={{ colorScheme }}
         >
-          <Component {...pageProps} />
-        </IntlProvider>
-      </MantineProvider>
+          <IntlProvider
+            locale={shortLocale}
+            messages={messages}
+            onError={() => null}
+          >
+            <Component {...pageProps} />
+          </IntlProvider>
+        </MantineProvider>
+      </ColorSchemeProvider>
     </>
   );
 }
+
+App.getInitialProps = ({ ctx }: { ctx: GetServerSidePropsContext }) => ({
+  // get color scheme from cookie
+  colorScheme: getCookie("mantine-color-scheme", ctx) || "light",
+});

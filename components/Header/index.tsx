@@ -13,6 +13,7 @@ import { useIntl } from "react-intl";
 import { ChevronDown } from "tabler-icons-react";
 import { HeaderLink } from "../../lib/common/constant";
 import messages from "../../lib/i18n/messages";
+import { ColorSchemeToggle } from "../ColorSchemeToggle";
 import { MantineLogo } from "../shared/MantineLogo";
 
 const HEADER_HEIGHT = 60;
@@ -129,12 +130,19 @@ export function HeaderAction({ links }: HeaderActionProps) {
           />
           <MantineLogo />
         </Group>
-        <Group spacing={5} className={classes.links}>
+
+        <Group spacing={24} className={classes.links} position="center">
           {items}
         </Group>
-        <Button radius="xl" sx={{ height: 30 }}>
-          {upperFirst(formatMessage(messages["authentication.form.login"]))}
-        </Button>
+
+        <Group spacing={24} position="right" noWrap>
+          <div className={classes.links}>
+            <ColorSchemeToggle />
+          </div>
+          <Button radius="xl" size="md" sx={{ height: 30 }}>
+            {upperFirst(formatMessage(messages["authentication.form.login"]))}
+          </Button>
+        </Group>
       </Container>
     </Header>
   );
