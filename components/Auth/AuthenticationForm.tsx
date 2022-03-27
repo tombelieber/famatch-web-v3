@@ -49,7 +49,7 @@ export function AuthenticationForm(props: PaperProps<"div">) {
       withBorder
       {...props}
       sx={(theme) => ({
-        [`@media (min-width: ${theme.breakpoints.sm}px)`]: { width: 420 },
+        [`@media (min-width: ${theme.breakpoints.xs}px)`]: { width: 420 },
       })}
     >
       <Text size="lg" weight={500}>
