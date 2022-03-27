@@ -86,11 +86,15 @@
   "t+0nKk": [
     {
       "type": 0,
-      "value": "歡迎來到Famatch.io，"
+      "value": "歡迎來到Famatch，"
     },
     {
       "type": 1,
       "value": "type"
+    },
+    {
+      "type": 0,
+      "value": "以繼續"
     }
   ],
   "tAiItl": [
