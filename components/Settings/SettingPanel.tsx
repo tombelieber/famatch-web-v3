@@ -6,7 +6,7 @@ import {
   useMantineColorScheme,
 } from "@mantine/core";
 import { useRouter } from "next/router";
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { useIntl } from "react-intl";
 import { LanguageHiragana, MoonStars, Sun } from "tabler-icons-react";
 import messages from "../../lib/i18n/messages";
@@ -24,9 +24,14 @@ const SettingPanel: FC<SettingPanelProps> = () => {
   const { formatMessage } = useIntl();
   const { colorScheme } = useMantineColorScheme();
   const router = useRouter();
-  const { pathname, asPath, query } = router;
-
+  const { pathname, asPath, query, locale } = router;
   const [value, setValue] = useState(localeOptions[0]);
+  useEffect(() => {
+    const initialLocale = localeOptions.find((e) => e.value === locale);
+    if (initialLocale) {
+      setValue(initialLocale);
+    }
+  }, [locale]);
 
   const onChange = (value: string | null): void => {
     const findOption = localeOptions.find((e) => e.value === value);
@@ -42,7 +47,6 @@ const SettingPanel: FC<SettingPanelProps> = () => {
 
   return (
     <>
-      {/* use group instead */}
       <Container size="sm">
         <Title sx={(theme) => ({ marginBottom: theme.spacing.xl })}>
           {formatMessage(messages["setting.title"])}
@@ -68,7 +72,6 @@ const SettingPanel: FC<SettingPanelProps> = () => {
                 <MoonStars size={24} />
               )
             }
-            // text="主題顏色"
             text={formatMessage(messages["setting.theme_mode"])}
           >
             <ColorSchemeToggleSwitch />
