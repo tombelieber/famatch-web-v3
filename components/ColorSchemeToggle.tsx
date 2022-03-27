@@ -15,7 +15,7 @@ export function ColorSchemeToggle() {
         color:
           theme.colorScheme === "dark"
             ? theme.colors.yellow[4]
-            : theme.colors.blue[6],
+            : theme.colors.yellow[4],
       })}
     >
       {colorScheme === "dark" ? <Sun size={24} /> : <MoonStars size={24} />}

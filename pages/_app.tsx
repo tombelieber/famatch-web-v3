@@ -63,7 +63,10 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
         <MantineProvider
           withGlobalStyles
           withNormalizeCSS
-          theme={{ colorScheme }}
+          theme={{
+            colorScheme,
+            primaryColor: "yellow",
+          }}
         >
           <IntlProvider
             locale={shortLocale}
