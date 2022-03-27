@@ -86,7 +86,7 @@ export function AuthenticationForm(props: PaperProps<"div">) {
             label={upperFirst(
               formatMessage(messages["authentication.form.email"]),
             )}
-            placeholder="hello@mantine.dev"
+            placeholder="hello@famatch.io"
             value={form.values.email}
             onChange={(event) =>
               form.setFieldValue("email", event.currentTarget.value)
