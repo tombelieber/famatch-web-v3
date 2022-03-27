@@ -8,7 +8,7 @@ import {
 import { useRouter } from "next/router";
 import { FC, useState } from "react";
 import { LanguageHiragana, MoonStars, Sun } from "tabler-icons-react";
-import ColorSchemeToggleSwitch from "../ColorSchemeToggleSwitch";
+import ColorSchemeToggleSwitch from "../ColorScheme/ColorSchemeToggleSwitch";
 
 import SettingListItem from "./SettingListItem";
 
