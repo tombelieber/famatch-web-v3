@@ -14,7 +14,7 @@ import { useIntl } from "react-intl";
 import { ChevronDown } from "tabler-icons-react";
 import { HeaderLink } from "../../lib/common/constant";
 import messages from "../../lib/i18n/messages";
-import { ColorSchemeToggle } from "../ColorSchemeToggle";
+import { ColorSchemeToggle } from "../ColorScheme/ColorSchemeToggle";
 import { FamatchLogo } from "../shared/FamatchLogo";
 
 const HEADER_HEIGHT = 60;
