@@ -1,56 +1,15 @@
-export const headerLinks = {
-  links: [
-    {
-      link: "/about",
-      label: "Features",
-    },
-    {
-      link: "#1",
-      label: "Learn",
-      links: [
-        {
-          link: "/docs",
-          label: "Documentation",
-        },
-        {
-          link: "/resources",
-          label: "Resources",
-        },
-        {
-          link: "/community",
-          label: "Community",
-        },
-        {
-          link: "/blog",
-          label: "Blog",
-        },
-      ],
-    },
-    {
-      link: "/about",
-      label: "About",
-    },
-    {
-      link: "/pricing",
-      label: "Pricing",
-    },
-    {
-      link: "#2",
-      label: "Support",
-      links: [
-        {
-          link: "/faq",
-          label: "FAQ",
-        },
-        {
-          link: "/demo",
-          label: "Book a demo",
-        },
-        {
-          link: "/forums",
-          label: "Forums",
-        },
-      ],
-    },
-  ],
+import { MessageDescriptor } from "react-intl";
+import messages from "../i18n/messages";
+import { ROUTES } from "../router/routes";
+
+export type RouteLink = { pathname: string; label: MessageDescriptor };
+export type HeaderLink = RouteLink & {
+  sublinks?: RouteLink[];
 };
+
+export const headerLinks: HeaderLink[] = [
+  { pathname: ROUTES.root, label: messages["header.links.home"] },
+  { pathname: ROUTES.rooms, label: messages["header.links.rooms"] },
+  { pathname: ROUTES.history, label: messages["header.links.history"] },
+  { pathname: ROUTES.settings, label: messages["header.links.settings"] },
+];

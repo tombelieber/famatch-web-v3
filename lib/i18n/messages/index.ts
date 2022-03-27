@@ -26,7 +26,11 @@ const messages = defineMessages({
   },
   "authentication.form.dont_have_account": {
     defaultMessage: "Don't have an account? Register",
-  },
+  }, // header.links
+  "header.links.home": { defaultMessage: "Home" },
+  "header.links.rooms": { defaultMessage: "Rooms" },
+  "header.links.history": { defaultMessage: "History" },
+  "header.links.settings": { defaultMessage: "Settings" },
 });
 
 export default messages;

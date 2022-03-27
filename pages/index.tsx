@@ -1,4 +1,4 @@
-import { AppShell, Center, Header } from "@mantine/core";
+import { AppShell, Center } from "@mantine/core";
 import type { NextPage } from "next";
 import Head from "next/head";
 import { AuthenticationForm } from "../components/Auth/AuthenticationForm";
@@ -22,7 +22,7 @@ const Home: NextPage = () => {
           //     {/* Navbar content */}
           //   </Navbar>
           // }
-          header={<HeaderAction links={headerLinks.links} />}
+          header={<HeaderAction links={headerLinks} />}
           styles={(theme) => ({
             main: {
               backgroundColor:

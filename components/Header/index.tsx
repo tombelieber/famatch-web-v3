@@ -1,16 +1,18 @@
-import React from "react";
 import {
-  createStyles,
-  Menu,
-  Center,
-  Header,
-  Container,
-  Group,
-  Button,
   Burger,
+  Button,
+  Center,
+  Container,
+  createStyles,
+  Group,
+  Header,
+  Menu,
 } from "@mantine/core";
-import { useBooleanToggle } from "@mantine/hooks";
+import { upperFirst, useBooleanToggle } from "@mantine/hooks";
+import { useIntl } from "react-intl";
 import { ChevronDown } from "tabler-icons-react";
+import { HeaderLink } from "../../lib/common/constant";
+import messages from "../../lib/i18n/messages";
 import { MantineLogo } from "../shared/MantineLogo";
 
 const HEADER_HEIGHT = 60;
@@ -62,25 +64,22 @@ const useStyles = createStyles((theme) => ({
 }));
 
 interface HeaderActionProps {
-  links: {
-    link: string;
-    label: string;
-    links: { link: string; label: string }[];
-  }[];
+  links: HeaderLink[];
 }
 
 export function HeaderAction({ links }: HeaderActionProps) {
   const { classes } = useStyles();
+  const { formatMessage } = useIntl();
   const [opened, toggleOpened] = useBooleanToggle(false);
   const items = links.map((link) => {
-    const menuItems = link.links?.map((item) => (
-      <Menu.Item key={item.link}>{item.label}</Menu.Item>
+    const menuItems = link.sublinks?.map((item) => (
+      <Menu.Item key={item.pathname}>{formatMessage(item.label)}</Menu.Item>
     ));
 
     if (menuItems) {
       return (
         <Menu
-          key={link.label}
+          key={`menu-item-${link.pathname}`}
           trigger="hover"
           delay={0}
           transitionDuration={0}
@@ -88,12 +87,14 @@ export function HeaderAction({ links }: HeaderActionProps) {
           gutter={1}
           control={
             <a
-              href={link.link}
+              href={link.pathname}
               className={classes.link}
               onClick={(event) => event.preventDefault()}
             >
               <Center>
-                <span className={classes.linkLabel}>{link.label}</span>
+                <span className={classes.linkLabel}>
+                  {formatMessage(link.label)}
+                </span>
                 <ChevronDown size={12} />
               </Center>
             </a>
@@ -106,12 +107,12 @@ export function HeaderAction({ links }: HeaderActionProps) {
 
     return (
       <a
-        key={link.label}
-        href={link.link}
+        key={`anchor-${link.pathname}`}
+        href={link.pathname}
         className={classes.link}
         onClick={(event) => event.preventDefault()}
       >
-        {link.label}
+        {formatMessage(link.label)}
       </a>
     );
   });
@@ -132,7 +133,7 @@ export function HeaderAction({ links }: HeaderActionProps) {
           {items}
         </Group>
         <Button radius="xl" sx={{ height: 30 }}>
-          Get early access
+          {upperFirst(formatMessage(messages["authentication.form.login"]))}
         </Button>
       </Container>
     </Header>

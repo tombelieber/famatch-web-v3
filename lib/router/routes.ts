@@ -1,5 +1,6 @@
 export const ROUTES = {
   root: "/",
+  rooms: "/rooms",
   history: "/history",
   settings: "/settings",
   profile: "/profile",

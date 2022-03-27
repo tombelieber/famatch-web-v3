@@ -23,6 +23,12 @@
       "value": "Invalid email"
     }
   ],
+  "D3idYv": [
+    {
+      "type": 0,
+      "value": "Settings"
+    }
+  ],
   "EHNQ95": [
     {
       "type": 0,
@@ -39,6 +45,18 @@
     {
       "type": 0,
       "value": "register"
+    }
+  ],
+  "djJp6c": [
+    {
+      "type": 0,
+      "value": "History"
+    }
+  ],
+  "ejEGdx": [
+    {
+      "type": 0,
+      "value": "Home"
     }
   ],
   "sQnzu7": [
@@ -83,6 +101,12 @@
     {
       "type": 0,
       "value": "Your name"
+    }
+  ],
+  "xIHOhT": [
+    {
+      "type": 0,
+      "value": "Rooms"
     }
   ],
   "yUVl6+": [
