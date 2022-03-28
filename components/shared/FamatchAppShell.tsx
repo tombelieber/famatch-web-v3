@@ -1,6 +1,7 @@
 import { AppShell } from "@mantine/core";
 import type { FC } from "react";
-import { headerLinks } from "../../lib/common/constant";
+import { navigationRoutes } from "../../lib/router/routes";
+import { FooterSocial } from "../BottomTabs/FooterSocial";
 import { HeaderAction } from "../Header";
 
 type FamatchAppShellProps = {};
@@ -10,7 +11,7 @@ const FamatchAppShell: FC<FamatchAppShellProps> = ({ children }) => {
     <>
       <AppShell
         fixed
-        header={<HeaderAction links={headerLinks} />}
+        header={<HeaderAction links={navigationRoutes} />}
         styles={(theme) => ({
           main: {
             backgroundColor:
@@ -23,6 +24,7 @@ const FamatchAppShell: FC<FamatchAppShellProps> = ({ children }) => {
         {/* Your application here */}
         {children}
       </AppShell>
+      <FooterSocial />
     </>
   );
 };
