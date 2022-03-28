@@ -72,11 +72,11 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-interface HeaderActionProps {
+interface AppHeaderProps {
   links: HeaderLink[];
 }
 
-export function HeaderAction({ links }: HeaderActionProps) {
+export function AppHeader({ links }: AppHeaderProps) {
   const { classes } = useStyles();
   const { formatMessage } = useIntl();
   const { pathname } = useRouter();

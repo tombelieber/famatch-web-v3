@@ -33,7 +33,7 @@ const StyledTab: FC<TabProps> = (props) => (
   />
 );
 
-export function FooterSocial() {
+export function BottomNavigationTabs() {
   const { classes, theme } = useStyles();
   const { push } = useRouter();
 
