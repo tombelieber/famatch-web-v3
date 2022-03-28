@@ -8,7 +8,9 @@ import {
   Text,
   useMantineTheme,
 } from "@mantine/core";
+import { useRouter } from "next/router";
 import { ServiceData } from "../../lib/common/constant";
+import { ROUTES } from "../../lib/router/routes";
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -36,7 +38,9 @@ export function ServiceCard({
   description,
   country,
   badges,
+  slug,
 }: ServiceData) {
+  const { push } = useRouter();
   const { classes } = useStyles();
   const theme = useMantineTheme();
 
@@ -80,7 +84,13 @@ export function ServiceCard({
       </Card.Section>
 
       <Group mt="xs">
-        <Button radius="md" style={{ flex: 1 }}>
+        <Button
+          radius="md"
+          style={{ flex: 1 }}
+          onClick={() => {
+            push(ROUTES.serviceRooms(slug));
+          }}
+        >
           瀏覽房間
         </Button>
       </Group>
