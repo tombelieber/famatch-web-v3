@@ -1,6 +1,7 @@
 export const ROUTES = {
   root: "/",
   rooms: "/rooms",
+  serviceRooms: (id: string) => `/rooms/${id}`,
   history: "/history",
   settings: "/settings",
   profile: "/profile",

@@ -30,13 +30,12 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-export function BadgeCard({
+export function ServiceCard({
   image,
   title,
   description,
   country,
   badges,
-  subscribed,
 }: ServiceData) {
   const { classes } = useStyles();
   const theme = useMantineTheme();

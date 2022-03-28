@@ -16,7 +16,7 @@ export const headerLinks: HeaderLink[] = [
 ];
 
 export type ServiceData = {
-  subscribed?: boolean;
+  subscribed?: boolean; // receive update on room change
   image: string;
   title: string;
   description: string;

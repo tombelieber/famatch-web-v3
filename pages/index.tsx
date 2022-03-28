@@ -2,7 +2,7 @@ import { Container, SimpleGrid } from "@mantine/core";
 import type { NextPage } from "next";
 import Head from "next/head";
 import { useIntl } from "react-intl";
-import { BadgeCard } from "../components/Home/Rooms";
+import { ServiceCard } from "../components/Home/ServiceCard";
 import { serviceIcons } from "../lib/common/constant";
 import messages from "../lib/i18n/messages";
 
@@ -27,7 +27,7 @@ const Home: NextPage = () => {
           ]}
         >
           {serviceIcons.map((data) => (
-            <BadgeCard key={data.title} {...data} />
+            <ServiceCard key={data.title} {...data} />
           ))}
         </SimpleGrid>
       </Container>
