@@ -6,7 +6,6 @@ import {
   Group,
   Image,
   Text,
-  useMantineTheme,
 } from "@mantine/core";
 import { useRouter } from "next/router";
 import { ServiceData } from "../../lib/common/constant";
@@ -42,7 +41,6 @@ export function ServiceCard({
 }: ServiceData) {
   const { push } = useRouter();
   const { classes } = useStyles();
-  const theme = useMantineTheme();
 
   const features = badges.map((badge) => (
     <Badge

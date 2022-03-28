@@ -18,6 +18,10 @@ export function FamatchLogo({
     <>
       <NextLink href={ROUTES.root}>
         <Image
+          sx={(theme) => ({
+            backgroundColor:
+              theme.colorScheme === "dark" ? "whitesmoke" : "initial",
+          })}
           width={width}
           src="/assets/logo/logo-fullname.png"
           alt="Famatch.io"
