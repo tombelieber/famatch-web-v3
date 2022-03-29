@@ -32,6 +32,7 @@ const messages = defineMessages({
   // header
   "header.links.home": { defaultMessage: "Home" },
   "header.links.rooms": { defaultMessage: "Rooms" },
+  "header.links.queues": { defaultMessage: "Queues" },
   "header.links.history": { defaultMessage: "History" },
   "header.links.settings": { defaultMessage: "Settings" },
 

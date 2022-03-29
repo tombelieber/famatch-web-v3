@@ -127,7 +127,11 @@ export function AppHeader({ links }: AppHeaderProps) {
         href={link.pathname}
         className={classes.link}
       >
-        <Text size="sm" weight={link.pathname === pathname ? "bold" : "normal"}>
+        <Text
+          variant={link.pathname === pathname ? "link" : "text"}
+          size="sm"
+          weight={link.pathname === pathname ? "bold" : "normal"}
+        >
           {formatMessage(link.label)}
         </Text>
       </NextLink>

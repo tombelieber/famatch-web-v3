@@ -29,6 +29,7 @@ export type HeaderLink = NavigationRoute & {
 export const navigationRoutes: HeaderLink[] = [
   { pathname: ROUTES.root, label: messages["header.links.home"] },
   { pathname: ROUTES.rooms, label: messages["header.links.rooms"] },
+  { pathname: ROUTES.queues, label: messages["header.links.queues"] },
   { pathname: ROUTES.history, label: messages["header.links.history"] },
   { pathname: ROUTES.settings, label: messages["header.links.settings"] },
 ];
