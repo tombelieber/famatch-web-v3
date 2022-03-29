@@ -1,17 +1,18 @@
 import { DefaultMantineColor } from "@mantine/core";
 
+type ServiceStat = { label: string; count: string; color: DefaultMantineColor };
+
 export type ServiceData = {
   slug: string;
   subscribed?: boolean; // receive update on room change
   image: string;
   title: string;
   description: string;
-  country: string;
-  badges: {
-    emoji: string;
-    label: string;
-    color: DefaultMantineColor;
-  }[];
+  stat: {
+    queue: ServiceStat;
+    room: ServiceStat;
+    matched: ServiceStat;
+  };
 };
 export const serviceIcons: ServiceData[] = [
   {
@@ -21,19 +22,11 @@ export const serviceIcons: ServiceData[] = [
     slug: "nintendo-switch",
     description:
       "家庭計劃是包含購買使用券的Nintendo Account，所有家庭成員（最多8個帳號）都能使用服務的計劃。",
-    country: "",
-    badges: [
-      {
-        emoji: "房間",
-        label: "2",
-        color: "blue",
-      },
-      {
-        emoji: "已配對",
-        label: "15",
-        color: "green",
-      },
-    ],
+    stat: {
+      room: { label: "房間", count: "2", color: "blue" },
+      matched: { label: "已配對", count: "15", color: "green" },
+      queue: { label: "等待中", count: "0", color: "red" },
+    },
   },
   {
     subscribed: true,
@@ -43,19 +36,11 @@ export const serviceIcons: ServiceData[] = [
     slug: "spotify",
     description:
       "6 個 Premium 帳戶，適用於同住在一個屋簷下的家庭成員。每月 HK$98.00。 可隨時取消。",
-    country: "3人等待中",
-    badges: [
-      {
-        emoji: "房間",
-        label: "0",
-        color: "blue",
-      },
-      {
-        emoji: "已配對",
-        label: "15",
-        color: "green",
-      },
-    ],
+    stat: {
+      room: { label: "房間", count: "0", color: "blue" },
+      matched: { label: "已配對", count: "15", color: "green" },
+      queue: { label: "等待中", count: "0", color: "red" },
+    },
   },
   {
     image:
@@ -64,19 +49,11 @@ export const serviceIcons: ServiceData[] = [
     slug: "netflix",
     description:
       "Netflix收費由每月月費HK$63至HK$93不等，分標準畫質、高畫質（HD)及超高畫質（UHD 4K），最多4人共用，除開最平一人HK$23.3一個月，",
-    country: "",
-    badges: [
-      {
-        emoji: "房間",
-        label: "1",
-        color: "blue",
-      },
-      {
-        emoji: "已配對",
-        label: "15",
-        color: "green",
-      },
-    ],
+    stat: {
+      room: { label: "房間", count: "0", color: "blue" },
+      matched: { label: "已配對", count: "15", color: "green" },
+      queue: { label: "等待中", count: "0", color: "red" },
+    },
   },
   {
     image:
@@ -85,19 +62,11 @@ export const serviceIcons: ServiceData[] = [
     slug: "youtube-premium",
     description:
       "家庭方案 • 月費制 • 免費試用 1 個月 • 之後每月只要 HK$98.00 • 最多可新增 5 位滿 13 歲的家庭成員。",
-    country: "",
-    badges: [
-      {
-        emoji: "房間",
-        label: "2",
-        color: "blue",
-      },
-      {
-        emoji: "已配對",
-        label: "15",
-        color: "green",
-      },
-    ],
+    stat: {
+      room: { label: "房間", count: "0", color: "blue" },
+      matched: { label: "已配對", count: "15", color: "green" },
+      queue: { label: "等待中", count: "0", color: "red" },
+    },
   },
   {
     image:
@@ -106,19 +75,11 @@ export const serviceIcons: ServiceData[] = [
     slug: "icloud",
     description:
       "透過「家人共享」，你最多可與另外五位家庭成員共享一個 iCloud+ 服務計劃。",
-    country: "",
-    badges: [
-      {
-        emoji: "房間",
-        label: "3",
-        color: "blue",
-      },
-      {
-        emoji: "已配對",
-        label: "15",
-        color: "green",
-      },
-    ],
+    stat: {
+      room: { label: "房間", count: "0", color: "blue" },
+      matched: { label: "已配對", count: "15", color: "green" },
+      queue: { label: "等待中", count: "0", color: "red" },
+    },
   },
   {
     image:
@@ -127,18 +88,10 @@ export const serviceIcons: ServiceData[] = [
     slug: "google-one",
     description:
       "Google One 可透過「家庭群組」同最多 5 位家庭成員（即共 6 人）共享一個雲端空間",
-    country: "",
-    badges: [
-      {
-        emoji: "房間",
-        label: "2",
-        color: "blue",
-      },
-      {
-        emoji: "已配對",
-        label: "15",
-        color: "green",
-      },
-    ],
+    stat: {
+      room: { label: "房間", count: "0", color: "blue" },
+      matched: { label: "已配對", count: "15", color: "green" },
+      queue: { label: "等待中", count: "0", color: "red" },
+    },
   },
 ];

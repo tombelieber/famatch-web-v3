@@ -21,7 +21,8 @@ const Home: NextPage = () => {
           cols={4}
           spacing="lg"
           breakpoints={[
-            { maxWidth: "md", cols: 3, spacing: "md" },
+            { maxWidth: "lg", cols: 3, spacing: "lg" },
+            { maxWidth: "md", cols: 2, spacing: "md" },
             { maxWidth: "sm", cols: 2, spacing: "sm" },
             { maxWidth: "xs", cols: 1, spacing: "sm" },
           ]}

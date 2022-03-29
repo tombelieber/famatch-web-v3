@@ -7,6 +7,7 @@ import {
   Image,
   Text,
 } from "@mantine/core";
+import { useModals } from "@mantine/modals";
 import { useRouter } from "next/router";
 import { ServiceData } from "../../lib/common/constant";
 import { ROUTES } from "../../lib/router/routes";
@@ -32,25 +33,23 @@ const useStyles = createStyles((theme) => ({
 }));
 
 export function ServiceCard({
+  slug,
   image,
   title,
   description,
-  country,
-  badges,
-  slug,
+  stat,
 }: ServiceData) {
   const { push } = useRouter();
   const { classes } = useStyles();
+  const modals = useModals();
 
-  const features = badges.map((badge) => (
-    <Badge
-      color={badge.color}
-      key={badge.label}
-      leftSection={badge.emoji}
-      rightSection={badge.label}
-      size="xl"
-    />
-  ));
+  const openJoinModal = () => {
+    modals.openModal({
+      title,
+      children: <>custom component ehre</>,
+      centered: true,
+    });
+  };
 
   return (
     <Card withBorder radius="md" p="md" className={classes.card}>
@@ -64,11 +63,22 @@ export function ServiceCard({
             {title}
           </Text>
 
-          {country && (
-            <Badge color="red" size="lg">
-              {country}
-            </Badge>
-          )}
+          <Badge
+            sx={{ cursor: "pointer" }}
+            color={stat.matched.color}
+            leftSection={stat.matched.label}
+            rightSection={stat.matched.count}
+            size="lg"
+            onClick={() => {
+              push({
+                pathname: ROUTES.rooms,
+                query: {
+                  service: slug,
+                  match: true,
+                },
+              });
+            }}
+          />
         </Group>
         <Text size="sm" mt="xs" lineClamp={3}>
           {description}
@@ -77,19 +87,54 @@ export function ServiceCard({
 
       <Card.Section className={classes.section}>
         <Group position="apart" spacing={7}>
-          {features}
+          <Badge
+            sx={{ cursor: "pointer" }}
+            color={stat.room.color}
+            leftSection={stat.room.label}
+            rightSection={stat.room.count}
+            size="xl"
+            onClick={() => {
+              push({
+                pathname: ROUTES.rooms,
+                query: {
+                  service: slug,
+                },
+              });
+            }}
+          />
+
+          <Badge
+            sx={{ cursor: "pointer" }}
+            color="red"
+            size="xl"
+            leftSection={stat.queue.label}
+            rightSection={stat.queue.count}
+            onClick={() => {
+              push({
+                pathname: ROUTES.queues,
+                query: {
+                  service: slug,
+                },
+              });
+            }}
+          />
         </Group>
       </Card.Section>
 
       <Group mt="xs">
         <Button
+          variant="gradient"
+          color="yellow"
           radius="md"
-          style={{ flex: 1 }}
-          onClick={() => {
-            push(ROUTES.serviceRooms(slug));
+          gradient={{
+            from: "orange",
+            to: "yellow",
+            deg: 35,
           }}
+          style={{ flex: 1 }}
+          onClick={openJoinModal}
         >
-          瀏覽房間
+          立即開始
         </Button>
       </Group>
     </Card>

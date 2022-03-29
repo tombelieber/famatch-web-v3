@@ -11,7 +11,7 @@ import messages from "../i18n/messages";
 export const ROUTES = {
   root: "/",
   rooms: "/rooms",
-  serviceRooms: (id: string) => `/rooms/${id}`,
+  queues: "/queues",
   history: "/history",
   settings: "/settings",
   profile: "/profile",
