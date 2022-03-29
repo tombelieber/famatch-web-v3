@@ -80,7 +80,8 @@ export function ServiceCard({
             }}
           />
         </Group>
-        <Text size="sm" mt="xs" lineClamp={3}>
+
+        <Text sx={{ height: "4rem" }} size="sm" mt="xs" lineClamp={3}>
           {description}
         </Text>
       </Card.Section>
