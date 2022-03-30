@@ -4,7 +4,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { useIntl } from "react-intl";
 import messages from "../lib/i18n/messages";
-import { StatsCard } from "./RoomPreview";
+import { RoomPreviewCard } from "../components/Rooms/RoomPreviewCard";
 
 const Rooms: NextPage = () => {
   const { query } = useRouter();
@@ -28,11 +28,11 @@ const Rooms: NextPage = () => {
             { maxWidth: "xs", cols: 1, spacing: "sm" },
           ]}
         >
-          <StatsCard />
-          <StatsCard />
-          <StatsCard />
-          <StatsCard />
-          <StatsCard />
+          <RoomPreviewCard />
+          <RoomPreviewCard />
+          <RoomPreviewCard />
+          <RoomPreviewCard />
+          <RoomPreviewCard />
         </SimpleGrid>
       </Container>
     </>

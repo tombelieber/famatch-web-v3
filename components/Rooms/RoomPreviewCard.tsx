@@ -44,7 +44,7 @@ const useStyles = createStyles((theme) => ({
 const getProgress = (n: number) =>
   Array.from(Array(n).keys()).map((i) => i + 1);
 
-export function StatsCard() {
+export function RoomPreviewCard() {
   const { classes } = useStyles();
   const [isSubscribed, toggle] = useToggle(true, [true, false]);
 
