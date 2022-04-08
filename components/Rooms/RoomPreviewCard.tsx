@@ -72,9 +72,14 @@ const RoomPreviewCard: FC<RoomPreview> = ({
 
   return (
     <Paper radius="md" withBorder className={classes.card} mt={ICON_SIZE / 3}>
-      <ThemeIcon className={classes.icon} size={ICON_SIZE} radius={ICON_SIZE}>
-        <Image alt={service.name} src={service.image} />
-      </ThemeIcon>
+      <Avatar
+        size={ICON_SIZE}
+        radius={ICON_SIZE}
+        className={classes.icon}
+        alt={service.name}
+        src={service.image}
+        imageProps={{ style: { objectFit: "fill" } }}
+      />
 
       <Text align="center" weight={700} className={classes.title}>
         {service.name}
