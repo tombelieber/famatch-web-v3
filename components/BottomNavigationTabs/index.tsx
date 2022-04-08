@@ -1,6 +1,6 @@
 import { createStyles, TabProps, Tabs } from "@mantine/core";
 import { useRouter } from "next/router";
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import { bottomRoutes } from "../../lib/router/routes";
 
 const BOTTOM_NAVIGATION_HEIGHT = 60;
@@ -34,8 +34,23 @@ const StyledTab: FC<TabProps> = (props) => (
 );
 
 export function BottomNavigationTabs() {
-  const { classes, theme } = useStyles();
-  const { push } = useRouter();
+  const { classes } = useStyles();
+  const { push, pathname } = useRouter();
+
+  const [activeTab, setActiveTab] = useState(1);
+  const onChange = (active: number, tabKey: string) => {
+    setActiveTab(active);
+    push(tabKey);
+  };
+
+  useEffect(() => {
+    const findIndex = bottomRoutes.findIndex(
+      (route) => route.pathname === pathname,
+    );
+    if (findIndex !== -1) {
+      setActiveTab(findIndex);
+    }
+  }, [pathname]);
 
   return (
     <div className={classes.footer}>
@@ -43,13 +58,8 @@ export function BottomNavigationTabs() {
         <Tabs
           grow
           position="apart"
-          onTabChange={(active, tabKey) => {
-            if (!tabKey) {
-              console.error("failed to get tabKey, no route change.");
-              return;
-            }
-            push(tabKey);
-          }}
+          active={activeTab}
+          onTabChange={onChange}
           sx={(theme) => ({
             zIndex: 100,
             height: BOTTOM_NAVIGATION_HEIGHT,
