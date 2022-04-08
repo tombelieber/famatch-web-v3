@@ -87,7 +87,10 @@ export function AppHeader({ links }: AppHeaderProps) {
       withCloseButton: false,
       padding: 0,
       centered: true,
-      children: <AuthenticationForm />,
+      children: <AuthenticationForm sx={{ borderRadius: 16 }} />,
+      styles: {
+        modal: { borderRadius: 16 },
+      },
     });
   };
 
