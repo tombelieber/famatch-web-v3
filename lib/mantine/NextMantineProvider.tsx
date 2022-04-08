@@ -43,9 +43,18 @@ const NextMantineProvider: FC<NextMantineProviderProps> = ({
           theme={{
             colorScheme,
             primaryColor: "yellow",
+            focusRing: "never",
           }}
         >
-          <ModalsProvider>{children}</ModalsProvider>
+          <ModalsProvider
+            modalProps={{
+              styles: (theme) => ({
+                modal: { borderRadius: theme.radius.lg },
+              }),
+            }}
+          >
+            {children}
+          </ModalsProvider>
         </MantineProvider>
       </ColorSchemeProvider>
     </>

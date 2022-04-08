@@ -43,7 +43,12 @@ export function AuthenticationForm(props: PaperProps<"div">) {
   });
 
   return (
-    <Paper radius="md" p="xl" withBorder {...props}>
+    <Paper
+      radius="lg" // if use with modal, need to also set modal.radius, default as lg
+      p="xl"
+      withBorder
+      {...props}
+    >
       <Text size="lg" weight={500}>
         {formatMessage(messages["authentication.form.title"], { type })}
       </Text>

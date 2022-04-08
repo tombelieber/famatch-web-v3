@@ -1,14 +1,12 @@
 import { Container, SimpleGrid } from "@mantine/core";
 import type { NextPage } from "next";
 import Head from "next/head";
-import { useRouter } from "next/router";
 import { useIntl } from "react-intl";
 import RoomPreviewCard from "../components/Rooms/RoomPreviewCard";
 import { roomsData } from "../lib/common/constant";
 import messages from "../lib/i18n/messages";
 
 const Rooms: NextPage = () => {
-  const { query } = useRouter();
   const { formatMessage } = useIntl();
   return (
     <>
