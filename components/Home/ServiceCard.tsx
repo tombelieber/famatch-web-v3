@@ -1,18 +1,9 @@
-import {
-  Box,
-  BoxProps,
-  Button,
-  Card,
-  createStyles,
-  Group,
-  Image,
-  Text,
-} from "@mantine/core";
+import { Button, Card, createStyles, Group, Image, Text } from "@mantine/core";
 import { useModals } from "@mantine/modals";
 import { useRouter } from "next/router";
-import { FC } from "react";
-import { ServiceData, ServiceStat } from "../../lib/common/constant";
+import { ServiceData } from "../../lib/common/constant";
 import { ROUTES } from "../../lib/router/routes";
+import StatButton from "./StatButton";
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -49,35 +40,6 @@ export function ServiceCard({ slug, image, title, stat }: ServiceData) {
     });
   };
 
-  const MyBadge: FC<{ data: ServiceStat } & BoxProps<"div">> = ({
-    data,
-    ...props
-  }) => (
-    <Box
-      sx={({ colors, spacing, radius }) => ({
-        backgroundColor: colors[data.color][1],
-        paddingTop: spacing.xs,
-        paddingBottom: spacing.xs,
-        borderRadius: radius.md,
-        flex: 1,
-        cursor: "pointer",
-      })}
-      {...props}
-    >
-      <Text color={data.color} align="center" size="lg" weight={500}>
-        {data.count}
-      </Text>
-      <Text
-        align="center"
-        size="sm"
-        color={data.color}
-        // color="dimmed"
-      >
-        {data.label}
-      </Text>
-    </Box>
-  );
-
   return (
     <Card withBorder radius="md" p="md" className={classes.card}>
       <Card.Section>
@@ -94,7 +56,7 @@ export function ServiceCard({ slug, image, title, stat }: ServiceData) {
 
       <Card.Section className={classes.section}>
         <Group position="apart" direction="row">
-          <MyBadge
+          <StatButton
             data={stat.room}
             onClick={() => {
               push({
@@ -106,7 +68,7 @@ export function ServiceCard({ slug, image, title, stat }: ServiceData) {
             }}
           />
 
-          <MyBadge
+          <StatButton
             data={stat.matched}
             onClick={() => {
               push({
@@ -119,7 +81,7 @@ export function ServiceCard({ slug, image, title, stat }: ServiceData) {
             }}
           />
 
-          <MyBadge
+          <StatButton
             data={stat.queue}
             onClick={() => {
               push({
