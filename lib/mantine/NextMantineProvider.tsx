@@ -27,6 +27,13 @@ const NextMantineProvider: FC<NextMantineProviderProps> = ({
       setCookies("mantine-color-scheme", nextColorScheme, {
         maxAge: 60 * 60 * 24 * 30,
       });
+
+      document
+        .getElementsByName("theme-color")?.[0]
+        ?.setAttribute(
+          "content",
+          nextColorScheme === "dark" ? "#000000" : "#ffffff",
+        );
     },
     [colorScheme],
   );

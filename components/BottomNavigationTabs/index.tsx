@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { FC, useEffect, useState } from "react";
 import { bottomRoutes } from "../../lib/router/routes";
 
-const BOTTOM_NAVIGATION_HEIGHT = 60;
+const BOTTOM_NAVIGATION_HEIGHT = 80;
 
 const useStyles = createStyles((theme) => ({
   footer: {
@@ -27,8 +27,10 @@ const useStyles = createStyles((theme) => ({
 
 const StyledTab: FC<TabProps> = (props) => (
   <Tabs.Tab
-    sx={{ height: BOTTOM_NAVIGATION_HEIGHT }}
-    style={{ borderBottomWidth: 0 }}
+    style={{
+      height: BOTTOM_NAVIGATION_HEIGHT,
+      paddingBottom: 20,
+    }}
     {...props}
   />
 );

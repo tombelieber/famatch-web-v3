@@ -36,9 +36,9 @@ export const navigationRoutes: HeaderLink[] = [
 
 export type BottomRoute = { pathname: string; icon: JSX.Element };
 export const bottomRoutes: BottomRoute[] = [
-  { pathname: ROUTES.root, icon: <Home /> },
-  { pathname: ROUTES.rooms, icon: <LayersSubtract /> },
-  { pathname: ROUTES.profile, icon: <UserCircle /> },
-  { pathname: ROUTES.history, icon: <History /> },
-  { pathname: ROUTES.settings, icon: <Settings /> },
+  { pathname: ROUTES.root, icon: <Home size={32} /> },
+  { pathname: ROUTES.rooms, icon: <LayersSubtract size={32} /> },
+  { pathname: ROUTES.profile, icon: <UserCircle size={32} /> },
+  { pathname: ROUTES.history, icon: <History size={32} /> },
+  { pathname: ROUTES.settings, icon: <Settings size={32} /> },
 ];
