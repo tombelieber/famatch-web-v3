@@ -6,11 +6,9 @@ import {
   Button,
   createStyles,
   Group,
-  Image,
   Paper,
   Progress,
   Text,
-  ThemeIcon,
 } from "@mantine/core";
 import { useToggle } from "@mantine/hooks";
 import { format } from "date-fns";
@@ -58,7 +56,6 @@ const RoomPreviewCard: FC<RoomPreview> = ({
   paymentStatus,
   service,
   status,
-  children,
 }) => {
   const { classes } = useStyles();
   const [isSubscribed, toggle] = useToggle(true, [true, false]);
