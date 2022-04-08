@@ -1,6 +1,10 @@
 import { DefaultMantineColor } from "@mantine/core";
 
-type ServiceStat = { label: string; count: string; color: DefaultMantineColor };
+export type ServiceStat = {
+  label: string;
+  count: string;
+  color: DefaultMantineColor;
+};
 
 export type ServiceData = {
   slug: string;

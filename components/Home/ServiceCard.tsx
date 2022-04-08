@@ -1,5 +1,6 @@
 import {
-  Badge,
+  Box,
+  BoxProps,
   Button,
   Card,
   createStyles,
@@ -9,7 +10,8 @@ import {
 } from "@mantine/core";
 import { useModals } from "@mantine/modals";
 import { useRouter } from "next/router";
-import { ServiceData } from "../../lib/common/constant";
+import { FC } from "react";
+import { ServiceData, ServiceStat } from "../../lib/common/constant";
 import { ROUTES } from "../../lib/router/routes";
 
 const useStyles = createStyles((theme) => ({
@@ -25,20 +27,16 @@ const useStyles = createStyles((theme) => ({
     padding: theme.spacing.md,
   },
 
-  label: {
-    textTransform: "uppercase",
-    fontSize: theme.fontSizes.xs,
-    fontWeight: 700,
+  badge: {
+    backgroundColor:
+      theme.colorScheme === "dark"
+        ? theme.colors.dark[4]
+        : theme.colors.gray[3],
+    borderRadius: theme.radius.md,
   },
 }));
 
-export function ServiceCard({
-  slug,
-  image,
-  title,
-  description,
-  stat,
-}: ServiceData) {
+export function ServiceCard({ slug, image, title, stat }: ServiceData) {
   const { push } = useRouter();
   const { classes } = useStyles();
   const modals = useModals();
@@ -51,24 +49,65 @@ export function ServiceCard({
     });
   };
 
+  const MyBadge: FC<{ data: ServiceStat } & BoxProps<"div">> = ({
+    data,
+    ...props
+  }) => (
+    <Box
+      sx={({ colors, spacing, radius }) => ({
+        backgroundColor: colors[data.color][1],
+        paddingTop: spacing.xs,
+        paddingBottom: spacing.xs,
+        borderRadius: radius.md,
+        flex: 1,
+        cursor: "pointer",
+      })}
+      {...props}
+    >
+      <Text color={data.color} align="center" size="lg" weight={500}>
+        {data.count}
+      </Text>
+      <Text
+        align="center"
+        size="sm"
+        color={data.color}
+        // color="dimmed"
+      >
+        {data.label}
+      </Text>
+    </Box>
+  );
+
   return (
     <Card withBorder radius="md" p="md" className={classes.card}>
       <Card.Section>
         <Image src={image} alt={title} height={180} />
       </Card.Section>
 
-      <Card.Section className={classes.section} mt="md">
-        <Group position="apart">
+      <Card.Section className={classes.section}>
+        <Group position="center">
           <Text size="lg" weight={500}>
             {title}
           </Text>
+        </Group>
+      </Card.Section>
 
-          <Badge
-            sx={{ cursor: "pointer" }}
-            color={stat.matched.color}
-            leftSection={stat.matched.label}
-            rightSection={stat.matched.count}
-            size="lg"
+      <Card.Section className={classes.section}>
+        <Group position="apart" direction="row">
+          <MyBadge
+            data={stat.room}
+            onClick={() => {
+              push({
+                pathname: ROUTES.rooms,
+                query: {
+                  service: slug,
+                },
+              });
+            }}
+          />
+
+          <MyBadge
+            data={stat.matched}
             onClick={() => {
               push({
                 pathname: ROUTES.rooms,
@@ -79,37 +118,9 @@ export function ServiceCard({
               });
             }}
           />
-        </Group>
 
-        <Text sx={{ height: "4rem" }} size="sm" mt="xs" lineClamp={3}>
-          {description}
-        </Text>
-      </Card.Section>
-
-      <Card.Section className={classes.section}>
-        <Group position="apart" spacing={7}>
-          <Badge
-            sx={{ cursor: "pointer" }}
-            color={stat.room.color}
-            leftSection={stat.room.label}
-            rightSection={stat.room.count}
-            size="xl"
-            onClick={() => {
-              push({
-                pathname: ROUTES.rooms,
-                query: {
-                  service: slug,
-                },
-              });
-            }}
-          />
-
-          <Badge
-            sx={{ cursor: "pointer" }}
-            color="red"
-            size="xl"
-            leftSection={stat.queue.label}
-            rightSection={stat.queue.count}
+          <MyBadge
+            data={stat.queue}
             onClick={() => {
               push({
                 pathname: ROUTES.queues,
