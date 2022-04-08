@@ -11,12 +11,12 @@ import messages from "../i18n/messages";
 export const ROUTES = {
   root: "/",
   rooms: "/rooms",
+  rooms_detail: "/rooms-detail",
   queues: "/queues",
   history: "/history",
   settings: "/settings",
   profile: "/profile",
   users: "/users",
-  user: (id: string) => `/users/:${id}`,
   terms_of_services: "/terms-of-services",
   privacy_policy: "/privacy-policy",
 };

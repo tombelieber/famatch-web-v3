@@ -3,8 +3,9 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useIntl } from "react-intl";
+import RoomPreviewCard from "../components/Rooms/RoomPreviewCard";
+import { roomsData } from "../lib/common/constant";
 import messages from "../lib/i18n/messages";
-import { RoomPreviewCard } from "../components/Rooms/RoomPreviewCard";
 
 const Rooms: NextPage = () => {
   const { query } = useRouter();
@@ -28,11 +29,9 @@ const Rooms: NextPage = () => {
             { maxWidth: "xs", cols: 1, spacing: "sm" },
           ]}
         >
-          <RoomPreviewCard />
-          <RoomPreviewCard />
-          <RoomPreviewCard />
-          <RoomPreviewCard />
-          <RoomPreviewCard />
+          {roomsData.map((room) => (
+            <RoomPreviewCard key={room.id} {...room} />
+          ))}
         </SimpleGrid>
       </Container>
     </>
