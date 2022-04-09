@@ -6,12 +6,7 @@ import { QueueData } from "../../lib/common/constant";
 
 type QueueCardProps = {} & QueueData;
 
-const QueueCard: FC<QueueCardProps> = ({
-  createdAt,
-  id,
-  service,
-  expiredAt,
-}) => {
+const QueueCard: FC<QueueCardProps> = ({ service, expiredAt }) => {
   const modals = useModals();
 
   // expiryDate from now in days
