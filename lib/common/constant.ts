@@ -219,7 +219,8 @@ export const roomsData: RoomPreview[] = [
 ];
 
 export type QueueData = {
-  createedAt: Date;
+  createdAt: Date;
+  expiredAt: Date;
   id: number;
   service: {
     name: string;
@@ -229,7 +230,8 @@ export type QueueData = {
 export const queueData: QueueData[] = [
   {
     id: 0,
-    createedAt: new Date(),
+    createdAt: new Date("2022-04-01"),
+    expiredAt: new Date("2022-04-30"),
     service: {
       name: "Netflix",
       image:
@@ -237,7 +239,8 @@ export const queueData: QueueData[] = [
     },
   },
   {
-    createedAt: new Date(),
+    createdAt: new Date("2022-04-02"),
+    expiredAt: new Date("2022-05-01"),
     id: 1,
     service: {
       name: "Spotify",
