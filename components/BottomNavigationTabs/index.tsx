@@ -16,7 +16,7 @@ const useStyles = createStyles((theme) => ({
 
   container: {
     position: "fixed",
-    zIndex: 1000,
+    zIndex: 200,
     left: 0,
     right: 0,
     bottom: 0,
