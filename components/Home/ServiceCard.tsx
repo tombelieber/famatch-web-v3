@@ -60,6 +60,7 @@ export function ServiceCard({ slug, image, title, stat }: ServiceData) {
                 pathname: ROUTES.rooms,
                 query: {
                   service: slug,
+                  tabId: 0, // rooms tab
                 },
               });
             }}
@@ -73,6 +74,7 @@ export function ServiceCard({ slug, image, title, stat }: ServiceData) {
                 query: {
                   service: slug,
                   match: true,
+                  tabId: 0,
                 },
               });
             }}
@@ -82,9 +84,10 @@ export function ServiceCard({ slug, image, title, stat }: ServiceData) {
             data={stat.queue}
             onClick={() => {
               push({
-                pathname: ROUTES.queues,
+                pathname: ROUTES.rooms,
                 query: {
                   service: slug,
+                  tabId: 1, // queues tab
                 },
               });
             }}
