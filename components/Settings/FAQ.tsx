@@ -1,5 +1,5 @@
+import { Accordion, Container, createStyles, Title } from "@mantine/core";
 import React from "react";
-import { Container, Title, Accordion, createStyles } from "@mantine/core";
 import { useIntl } from "react-intl";
 import messages from "../../lib/i18n/messages";
 

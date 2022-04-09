@@ -1,5 +1,5 @@
+import { Avatar, Button, Card, createStyles, Group, Text } from "@mantine/core";
 import React from "react";
-import { createStyles, Card, Avatar, Text, Group, Button } from "@mantine/core";
 import { UserProfile } from "../pages/profile";
 
 const useStyles = createStyles((theme) => ({

@@ -1,12 +1,12 @@
 import { Container, Group, Paper, Text } from "@mantine/core";
-import type { FC } from "react";
+import type { FC, PropsWithChildren } from "react";
 
 type SettingListItemProps = {
   icon: JSX.Element;
   text: string;
 };
 
-const SettingListItem: FC<SettingListItemProps> = ({
+const SettingListItem: FC<PropsWithChildren<SettingListItemProps>> = ({
   children,
   icon,
   text,

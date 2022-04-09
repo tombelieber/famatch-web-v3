@@ -2,7 +2,6 @@ import { Avatar, Button, Group, Paper, Stack, Text } from "@mantine/core";
 import { useModals } from "@mantine/modals";
 import { differenceInDays } from "date-fns";
 import type { FC } from "react";
-
 import { QueueData } from "../../lib/common/constant";
 
 type QueueCardProps = {} & QueueData;

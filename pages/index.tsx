@@ -1,4 +1,4 @@
-import { Container, SimpleGrid, useMantineColorScheme } from "@mantine/core";
+import { Container, SimpleGrid } from "@mantine/core";
 import type { NextPage } from "next";
 import Head from "next/head";
 import { useIntl } from "react-intl";
@@ -9,8 +9,6 @@ import messages from "../lib/i18n/messages";
 
 const Home: NextPage = () => {
   usePWA();
-  const { colorScheme } = useMantineColorScheme();
-
   const { formatMessage } = useIntl();
   return (
     <>

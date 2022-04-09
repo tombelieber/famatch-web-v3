@@ -5,13 +5,13 @@ import {
 } from "@mantine/core";
 import { ModalsProvider } from "@mantine/modals";
 import { setCookies } from "cookies-next";
-import { FC, useCallback, useState } from "react";
+import { FC, PropsWithChildren, useCallback, useState } from "react";
 
 type NextMantineProviderProps = {
   defaultColorScheme: ColorScheme;
 };
 
-const NextMantineProvider: FC<NextMantineProviderProps> = ({
+const NextMantineProvider: FC<PropsWithChildren<NextMantineProviderProps>> = ({
   defaultColorScheme,
   children,
 }) => {
