@@ -16,6 +16,7 @@ const useStyles = createStyles((theme) => ({
 
   container: {
     position: "fixed",
+    zIndex: 1000,
     left: 0,
     right: 0,
     bottom: 0,
@@ -63,7 +64,6 @@ export function BottomNavigationTabs() {
           active={activeTab}
           onTabChange={onChange}
           sx={(theme) => ({
-            zIndex: 100,
             height: BOTTOM_NAVIGATION_HEIGHT,
             backgroundColor:
               theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.white,
