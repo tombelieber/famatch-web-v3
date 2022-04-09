@@ -1,11 +1,13 @@
 import { useRouter } from "next/router";
-import { FC, useMemo } from "react";
+import { FC, PropsWithChildren, useMemo } from "react";
 import { IntlProvider } from "react-intl";
 import English from "../../content/compiled-locales/en.json";
 import Chinese from "../../content/compiled-locales/zh.json";
 type NextReactIntlProviderProps = {};
 
-const NextIntlProvider: FC<NextReactIntlProviderProps> = ({ children }) => {
+const NextIntlProvider: FC<PropsWithChildren<NextReactIntlProviderProps>> = ({
+  children,
+}) => {
   const { locale } = useRouter();
   const [shortLocale] = locale ? locale.split("-") : ["en"];
   const messages = useMemo(() => {
@@ -21,6 +23,7 @@ const NextIntlProvider: FC<NextReactIntlProviderProps> = ({ children }) => {
 
   return (
     <>
+      {/* @ts-ignore: React 18 issue @https://github.com/formatjs/formatjs/issues/3510 */}
       <IntlProvider
         locale={shortLocale}
         messages={messages}

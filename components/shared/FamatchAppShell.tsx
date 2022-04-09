@@ -1,12 +1,14 @@
 import { AppShell } from "@mantine/core";
-import type { FC } from "react";
+import type { FC, PropsWithChildren } from "react";
 import { navigationRoutes } from "../../lib/router/routes";
 import { AppHeader } from "../AppHeader";
 import { BottomNavigationTabs } from "../BottomNavigationTabs";
 
 type FamatchAppShellProps = {};
 
-const FamatchAppShell: FC<FamatchAppShellProps> = ({ children }) => {
+const FamatchAppShell: FC<PropsWithChildren<FamatchAppShellProps>> = ({
+  children,
+}) => {
   return (
     <>
       <AppShell
