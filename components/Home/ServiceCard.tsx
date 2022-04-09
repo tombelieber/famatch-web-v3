@@ -6,10 +6,7 @@ import { ROUTES } from "../../lib/router/routes";
 import StatButton from "./StatButton";
 
 const useStyles = createStyles((theme) => ({
-  card: {
-    backgroundColor:
-      theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.white,
-  },
+  card: {},
 
   section: {
     borderBottom: `1px solid ${
