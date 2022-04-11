@@ -11,8 +11,16 @@ import { queueData, roomsData } from "../lib/common/constant";
 import messages from "../lib/i18n/messages";
 
 const useStyles = createStyles((theme, _params, getRef) => ({
+  container: {
+    [theme.fn.smallerThan("sm")]: {
+      padding: 0,
+    },
+  },
   tabContainer: {
-    [theme.fn.smallerThan("sm")]: { flexGrow: 1 },
+    [theme.fn.smallerThan("sm")]: {
+      flexGrow: 1,
+      padding: 0,
+    },
     [theme.fn.largerThan("sm")]: { flexGrow: 0 },
   },
 }));
@@ -47,7 +55,7 @@ const Rooms: NextPage = () => {
         </title>
       </Head>
 
-      <Container size="xl">
+      <Container size="xl" className={classes.container}>
         <Tabs initialTab={Number(query.tabId ?? 0)}>
           <Tabs.Tab
             className={classes.tabContainer}

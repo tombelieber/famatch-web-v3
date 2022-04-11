@@ -1,8 +1,18 @@
-import { Button, Card, createStyles, Group, Image, Text } from "@mantine/core";
-import { useModals } from "@mantine/modals";
+import {
+  Badge,
+  Button,
+  Card,
+  createStyles,
+  Group,
+  Image,
+  Stack,
+  Text,
+} from "@mantine/core";
 import { useRouter } from "next/router";
+import { useState } from "react";
 import { ServiceData } from "../../lib/common/constant";
 import { ROUTES } from "../../lib/router/routes";
+import EnrollModal from "./EnrollModal";
 import StatButton from "./StatButton";
 
 const useStyles = createStyles((theme) => ({
@@ -15,6 +25,13 @@ const useStyles = createStyles((theme) => ({
     padding: theme.spacing.md,
   },
 
+  scroll: {
+    flexGrow: 1,
+  },
+
+  priceSection: {
+    textAlign: "center",
+  },
   badge: {
     backgroundColor:
       theme.colorScheme === "dark"
@@ -24,93 +41,124 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-export function ServiceCard({ slug, image, title, stat }: ServiceData) {
+export function ServiceCard({
+  slug,
+  image,
+  title,
+  stat,
+  iconImage,
+  tags,
+  planTeirs,
+}: ServiceData) {
   const { push } = useRouter();
-  const { classes } = useStyles();
-  const modals = useModals();
-
-  const openJoinModal = () => {
-    modals.openModal({
-      title,
-      children: <>custom component ehre</>,
-      centered: true,
-    });
+  const { classes, cx } = useStyles();
+  const [opened, setOpened] = useState(false);
+  const onClose = () => {
+    setOpened(false);
+  };
+  const onOpen = () => {
+    setOpened(true);
   };
 
   return (
-    <Card withBorder radius="md" p="md" className={classes.card}>
-      <Card.Section>
-        <Image src={image} alt={title} height={180} />
-      </Card.Section>
+    <>
+      <EnrollModal
+        service={{ name: title, image: iconImage }}
+        opened={opened}
+        onClose={onClose}
+        onOpen={onOpen}
+      />
+      <Card withBorder radius="md" p="md" className={classes.card}>
+        <Card.Section>
+          <Image src={image} alt={title} height={180} />
+        </Card.Section>
 
-      <Card.Section className={classes.section}>
-        <Group position="center">
-          <Text size="lg" weight={500}>
-            {title}
-          </Text>
+        <Card.Section className={classes.section}>
+          <Group position="center">
+            <Text size="lg" weight={500}>
+              {`${title}`}
+            </Text>
+          </Group>
+        </Card.Section>
+
+        <Card.Section className={cx(classes.section)}>
+          <Group grow position="center">
+            {tags.map((tag) => (
+              <Badge key={tag}>{tag}</Badge>
+            ))}
+          </Group>
+
+          <Stack align="center" justify="center" className={classes.scroll}>
+            <div>
+              {planTeirs.map((tier) => (
+                <div key={tier.name} className={classes.priceSection}>
+                  <Text weight="bold">
+                    {` ${tier.priceMap.symbol}${
+                      tier.priceMap.monthly ?? tier.priceMap.yearly
+                    }${tier.priceMap.ccy} / ${
+                      tier.priceMap.monthly ? "month" : "year"
+                    }`}
+                  </Text>
+                  <Text color="dimmed" size="sm">
+                    {tier.name} {tier.accountCount}人
+                  </Text>
+                </div>
+              ))}
+            </div>
+          </Stack>
+        </Card.Section>
+
+        <Card.Section className={classes.section}>
+          <Group position="apart" direction="row">
+            <StatButton
+              label="空缺"
+              count={stat.room}
+              color="blue"
+              onClick={() => {
+                push({
+                  pathname: ROUTES.rooms,
+                  query: {
+                    service: slug,
+                    tabId: 0, // rooms tab
+                  },
+                });
+              }}
+            />
+
+            <StatButton
+              label="等候名單"
+              count={stat.queue}
+              color="red"
+              onClick={() => {
+                push({
+                  pathname: ROUTES.rooms,
+                  query: {
+                    service: slug,
+                    tabId: 1, // queues tab
+                  },
+                });
+              }}
+            />
+          </Group>
+        </Card.Section>
+
+        <Group mt="xs">
+          <Button
+            variant="gradient"
+            color="yellow"
+            radius="md"
+            gradient={{
+              from: "orange",
+              to: "yellow",
+              deg: 35,
+            }}
+            style={{ flex: 1 }}
+            onClick={() => setOpened(true)}
+          >
+            立即開始
+          </Button>
         </Group>
-      </Card.Section>
-
-      <Card.Section className={classes.section}>
-        <Group position="apart" direction="row">
-          <StatButton
-            data={stat.room}
-            onClick={() => {
-              push({
-                pathname: ROUTES.rooms,
-                query: {
-                  service: slug,
-                  tabId: 0, // rooms tab
-                },
-              });
-            }}
-          />
-
-          <StatButton
-            data={stat.matched}
-            onClick={() => {
-              push({
-                pathname: ROUTES.rooms,
-                query: {
-                  service: slug,
-                  match: true,
-                  tabId: 0,
-                },
-              });
-            }}
-          />
-
-          <StatButton
-            data={stat.queue}
-            onClick={() => {
-              push({
-                pathname: ROUTES.rooms,
-                query: {
-                  service: slug,
-                  tabId: 1, // queues tab
-                },
-              });
-            }}
-          />
-        </Group>
-      </Card.Section>
-
-      <Group mt="xs">
-        <Button
-          variant="gradient"
-          color="yellow"
-          radius="md"
-          gradient={{
-            from: "orange",
-            to: "yellow",
-            deg: 35,
-          }}
-          style={{ flex: 1 }}
-          onClick={openJoinModal}
-        >
-          立即開始
-        </Button>
-      </Group>
-    </Card>
+      </Card>
+    </>
   );
 }

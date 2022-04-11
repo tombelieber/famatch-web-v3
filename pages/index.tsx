@@ -4,7 +4,7 @@ import Head from "next/head";
 import { useIntl } from "react-intl";
 import usePWA from "../app/hooks/usePWA";
 import { ServiceCard } from "../components/Home/ServiceCard";
-import { serviceIcons } from "../lib/common/constant";
+import { serviceDb } from "../lib/common/constant";
 import messages from "../lib/i18n/messages";
 
 const Home: NextPage = () => {
@@ -29,7 +29,7 @@ const Home: NextPage = () => {
             { maxWidth: "xs", cols: 1, spacing: "sm" },
           ]}
         >
-          {serviceIcons.map((data) => (
+          {serviceDb.map((data) => (
             <ServiceCard key={data.title} {...data} />
           ))}
         </SimpleGrid>
