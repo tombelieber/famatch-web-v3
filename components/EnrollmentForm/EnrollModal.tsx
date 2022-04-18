@@ -83,7 +83,9 @@ const EnrollModal: FC<EnrollModalProps> = ({ opened, onClose, service }) => {
             {RoleOptions.map((option) => (
               <Button
                 key={option.value}
-                size="xl"
+                p="xs"
+                m="xs"
+                size="lg"
                 variant={
                   watch("role")?.value === option.value ? "filled" : "light"
                 }
@@ -99,7 +101,7 @@ const EnrollModal: FC<EnrollModalProps> = ({ opened, onClose, service }) => {
           <Stack>
             <Stack align="center">
               <Avatar
-                size={"xl"}
+                size="xl"
                 radius={ICON_SIZE}
                 alt={service.title}
                 src={service.iconImage}
