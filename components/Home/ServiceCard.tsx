@@ -1,15 +1,7 @@
-import {
-  Badge,
-  Button,
-  Card,
-  createStyles,
-  Group,
-  Image,
-  Stack,
-  Text,
-} from "@mantine/core";
+import { Button, Card, createStyles, Group, Image, Text } from "@mantine/core";
+import { orderBy } from "lodash";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { FC, useState } from "react";
 import { ServiceData } from "../../lib/common/constant";
 import { ROUTES } from "../../lib/router/routes";
 import EnrollModal from "./EnrollModal";
@@ -41,17 +33,10 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-export function ServiceCard({
-  slug,
-  image,
-  title,
-  stat,
-  iconImage,
-  tags,
-  planTeirs,
-}: ServiceData) {
+export const ServiceCard: FC<{ service: ServiceData }> = ({ service }) => {
+  const { slug, image, title, stat } = service;
   const { push } = useRouter();
-  const { classes, cx } = useStyles();
+  const { classes } = useStyles();
   const [opened, setOpened] = useState(false);
   const onClose = () => {
     setOpened(false);
@@ -63,7 +48,11 @@ export function ServiceCard({
   return (
     <>
       <EnrollModal
-        service={{ name: title, image: iconImage }}
+        service={{
+          ...service,
+          // TODO, sort this in server side
+          planTeirs: orderBy(service.planTeirs, (e) => e.accountCount, "desc"),
+        }}
         opened={opened}
         onClose={onClose}
         onOpen={onOpen}
@@ -81,7 +70,7 @@ export function ServiceCard({
           </Group>
         </Card.Section>
 
-        <Card.Section className={cx(classes.section)}>
+        {/* <Card.Section className={cx(classes.section)}>
           <Group grow position="center">
             {tags.map((tag) => (
               <Badge key={tag}>{tag}</Badge>
@@ -106,7 +95,7 @@ export function ServiceCard({
               ))}
             </div>
           </Stack>
-        </Card.Section>
+        </Card.Section> */}
 
         <Card.Section className={classes.section}>
           <Group position="apart" direction="row">
@@ -161,4 +150,4 @@ export function ServiceCard({
       </Card>
     </>
   );
-}
+};

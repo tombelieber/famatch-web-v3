@@ -30,7 +30,7 @@ const Home: NextPage = () => {
           ]}
         >
           {serviceDb.map((data) => (
-            <ServiceCard key={data.title} {...data} />
+            <ServiceCard key={data.title} service={data} />
           ))}
         </SimpleGrid>
       </Container>

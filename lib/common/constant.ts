@@ -6,15 +6,28 @@ export type ServiceStat = {
   color: DefaultMantineColor;
 };
 
+export enum PlanFrequency {
+  MONTHLY = "monthly",
+  YEARLY = "yearly",
+}
+
+export type FrequencyOption = {
+  label: string;
+  value: PlanFrequency;
+};
+
+export type PlanOffer = {
+  symbol: string;
+  ccy: string;
+  price: number;
+  frequencyOption: FrequencyOption;
+};
+
 export type PlanTier = {
+  id: number;
   accountCount: number;
   name: string;
-  priceMap: {
-    monthly: number | null;
-    yearly: number | null;
-    symbol: string;
-    ccy: string;
-  };
+  offers: PlanOffer[];
 };
 
 export type ServiceData = {
@@ -51,24 +64,36 @@ export const serviceDb: ServiceData[] = [
 
     planTeirs: [
       {
+        id: 0,
         name: "Nintendo Switch Online",
         accountCount: 8,
-        priceMap: {
-          monthly: null,
-          yearly: 295,
-          symbol: "$",
-          ccy: "HKD",
-        },
+        offers: [
+          {
+            symbol: "$",
+            ccy: "HKD",
+            frequencyOption: {
+              value: PlanFrequency.YEARLY,
+              label: "Yearly",
+            },
+            price: 295,
+          },
+        ],
       },
       {
+        id: 1,
         name: "Nintendo Switch Online + 擴充包",
         accountCount: 8,
-        priceMap: {
-          monthly: null,
-          yearly: 575,
-          symbol: "$",
-          ccy: "HKD",
-        },
+        offers: [
+          {
+            symbol: "$",
+            ccy: "HKD",
+            frequencyOption: {
+              value: PlanFrequency.YEARLY,
+              label: "Yearly",
+            },
+            price: 575,
+          },
+        ],
       },
     ],
     tags: ["🎮 Game"],
@@ -84,14 +109,20 @@ export const serviceDb: ServiceData[] = [
 
     planTeirs: [
       {
+        id: 2,
         name: "Family",
         accountCount: 6,
-        priceMap: {
-          monthly: 72,
-          yearly: null,
-          symbol: "$",
-          ccy: "HKD",
-        },
+        offers: [
+          {
+            symbol: "$",
+            ccy: "HKD",
+            frequencyOption: {
+              value: PlanFrequency.MONTHLY,
+              label: "Monthly",
+            },
+            price: 72,
+          },
+        ],
       },
     ],
     tags: ["🎵 Music"],
@@ -108,24 +139,36 @@ export const serviceDb: ServiceData[] = [
 
     planTeirs: [
       {
+        id: 3,
         name: "Duo",
         accountCount: 2,
-        priceMap: {
-          monthly: 78,
-          yearly: null,
-          symbol: "$",
-          ccy: "HKD",
-        },
+        offers: [
+          {
+            symbol: "$",
+            ccy: "HKD",
+            frequencyOption: {
+              value: PlanFrequency.MONTHLY,
+              label: "Monthly",
+            },
+            price: 78,
+          },
+        ],
       },
       {
+        id: 4,
         name: "Family",
         accountCount: 6,
-        priceMap: {
-          monthly: 98,
-          yearly: null,
-          symbol: "$",
-          ccy: "HKD",
-        },
+        offers: [
+          {
+            symbol: "$",
+            ccy: "HKD",
+            frequencyOption: {
+              value: PlanFrequency.MONTHLY,
+              label: "Monthly",
+            },
+            price: 98,
+          },
+        ],
       },
     ],
 
@@ -141,24 +184,36 @@ export const serviceDb: ServiceData[] = [
     stat: { room: 0, matched: 15, queue: 0 },
     planTeirs: [
       {
-        name: "Duo",
+        id: 5,
+        name: "Standard",
         accountCount: 2,
-        priceMap: {
-          monthly: 78,
-          yearly: null,
-          symbol: "$",
-          ccy: "HKD",
-        },
+        offers: [
+          {
+            symbol: "$",
+            ccy: "HKD",
+            frequencyOption: {
+              value: PlanFrequency.MONTHLY,
+              label: "Monthly",
+            },
+            price: 78,
+          },
+        ],
       },
       {
-        name: "Family",
-        accountCount: 6,
-        priceMap: {
-          monthly: 98,
-          yearly: null,
-          symbol: "$",
-          ccy: "HKD",
-        },
+        id: 6,
+        name: "Premium",
+        accountCount: 4,
+        offers: [
+          {
+            symbol: "$",
+            ccy: "HKD",
+            frequencyOption: {
+              value: PlanFrequency.MONTHLY,
+              label: "Monthly",
+            },
+            price: 93,
+          },
+        ],
       },
     ],
     tags: ["🎥 Video"],
@@ -174,14 +229,20 @@ export const serviceDb: ServiceData[] = [
 
     planTeirs: [
       {
+        id: 7,
         name: "家庭",
         accountCount: 6,
-        priceMap: {
-          monthly: 98,
-          yearly: null,
-          symbol: "$",
-          ccy: "HKD",
-        },
+        offers: [
+          {
+            symbol: "$",
+            ccy: "HKD",
+            frequencyOption: {
+              value: PlanFrequency.MONTHLY,
+              label: "Monthly",
+            },
+            price: 98,
+          },
+        ],
       },
     ],
 
@@ -198,24 +259,36 @@ export const serviceDb: ServiceData[] = [
 
     planTeirs: [
       {
+        id: 8,
         name: "200GB",
         accountCount: 6,
-        priceMap: {
-          monthly: 23,
-          yearly: null,
-          symbol: "$",
-          ccy: "HKD",
-        },
+        offers: [
+          {
+            symbol: "$",
+            ccy: "HKD",
+            frequencyOption: {
+              value: PlanFrequency.MONTHLY,
+              label: "Monthly",
+            },
+            price: 23,
+          },
+        ],
       },
       {
+        id: 9,
         name: "2TB",
         accountCount: 6,
-        priceMap: {
-          monthly: 78,
-          yearly: null,
-          symbol: "$",
-          ccy: "HKD",
-        },
+        offers: [
+          {
+            symbol: "$",
+            ccy: "HKD",
+            frequencyOption: {
+              value: PlanFrequency.MONTHLY,
+              label: "Monthly",
+            },
+            price: 78,
+          },
+        ],
       },
     ],
 
@@ -231,34 +304,79 @@ export const serviceDb: ServiceData[] = [
     stat: { room: 0, matched: 15, queue: 0 },
     planTeirs: [
       {
+        id: 10,
         name: "基本 100GB",
         accountCount: 6,
-        priceMap: {
-          monthly: 15,
-          yearly: 150,
-          symbol: "$",
-          ccy: "HKD",
-        },
+        offers: [
+          {
+            symbol: "$",
+            ccy: "HKD",
+            frequencyOption: {
+              value: PlanFrequency.MONTHLY,
+              label: "Monthly",
+            },
+            price: 15,
+          },
+          {
+            symbol: "$",
+            ccy: "HKD",
+            frequencyOption: {
+              value: PlanFrequency.YEARLY,
+              label: "Yearly",
+            },
+            price: 150,
+          },
+        ],
       },
       {
+        id: 11,
         name: "標準 200GB",
         accountCount: 6,
-        priceMap: {
-          monthly: 23,
-          yearly: 230,
-          symbol: "$",
-          ccy: "HKD",
-        },
+        offers: [
+          {
+            symbol: "$",
+            ccy: "HKD",
+            frequencyOption: {
+              value: PlanFrequency.MONTHLY,
+              label: "Monthly",
+            },
+            price: 23,
+          },
+          {
+            symbol: "$",
+            ccy: "HKD",
+            frequencyOption: {
+              value: PlanFrequency.YEARLY,
+              label: "Yearly",
+            },
+            price: 230,
+          },
+        ],
       },
       {
+        id: 12,
         name: "Premium 2TB",
         accountCount: 6,
-        priceMap: {
-          monthly: 79,
-          yearly: 799,
-          symbol: "$",
-          ccy: "HKD",
-        },
+        offers: [
+          {
+            symbol: "$",
+            ccy: "HKD",
+            frequencyOption: {
+              value: PlanFrequency.MONTHLY,
+              label: "Monthly",
+            },
+            price: 79,
+          },
+          {
+            symbol: "$",
+            ccy: "HKD",
+            frequencyOption: {
+              value: PlanFrequency.YEARLY,
+              label: "Yearly",
+            },
+            price: 799,
+          },
+        ],
       },
     ],
 
@@ -273,14 +391,20 @@ export const serviceDb: ServiceData[] = [
     stat: { room: 0, matched: 0, queue: 0 },
     planTeirs: [
       {
+        id: 13,
         name: "家庭",
         accountCount: 6,
-        priceMap: {
-          monthly: 88,
-          yearly: null,
-          symbol: "$",
-          ccy: "HKD",
-        },
+        offers: [
+          {
+            symbol: "$",
+            ccy: "HKD",
+            frequencyOption: {
+              value: PlanFrequency.MONTHLY,
+              label: "Monthly",
+            },
+            price: 88,
+          },
+        ],
       },
     ],
 
@@ -295,14 +419,20 @@ export const serviceDb: ServiceData[] = [
     stat: { room: 0, matched: 0, queue: 0 },
     planTeirs: [
       {
+        id: 14,
         name: "家庭",
         accountCount: 6,
-        priceMap: {
-          monthly: 38,
-          yearly: null,
-          symbol: "$",
-          ccy: "HKD",
-        },
+        offers: [
+          {
+            symbol: "$",
+            ccy: "HKD",
+            frequencyOption: {
+              value: PlanFrequency.MONTHLY,
+              label: "Monthly",
+            },
+            price: 38,
+          },
+        ],
       },
     ],
     tags: ["🎥 Video"],
@@ -316,14 +446,29 @@ export const serviceDb: ServiceData[] = [
     stat: { room: 0, matched: 0, queue: 0 },
     planTeirs: [
       {
+        id: 15,
         name: "家庭",
         accountCount: 7,
-        priceMap: {
-          monthly: 73,
-          yearly: 738,
-          symbol: "$",
-          ccy: "HKD",
-        },
+        offers: [
+          {
+            symbol: "$",
+            ccy: "HKD",
+            frequencyOption: {
+              value: PlanFrequency.MONTHLY,
+              label: "Monthly",
+            },
+            price: 73,
+          },
+          {
+            symbol: "$",
+            ccy: "HKD",
+            frequencyOption: {
+              value: PlanFrequency.YEARLY,
+              label: "Yearly",
+            },
+            price: 738,
+          },
+        ],
       },
     ],
     tags: ["🎥 Video"],
@@ -337,14 +482,20 @@ export const serviceDb: ServiceData[] = [
     iconImage: `data:image/png;base64,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`,
     planTeirs: [
       {
+        id: 16,
         name: "家庭計畫",
         accountCount: 3,
-        priceMap: {
-          monthly: 79,
-          yearly: null,
-          ccy: "HKD",
-          symbol: "$",
-        },
+        offers: [
+          {
+            ccy: "HKD",
+            symbol: "$",
+            frequencyOption: {
+              value: PlanFrequency.MONTHLY,
+              label: "Monthly",
+            },
+            price: 79,
+          },
+        ],
       },
     ],
     tags: ["🎵 Music"],
@@ -358,14 +509,20 @@ export const serviceDb: ServiceData[] = [
     iconImage: `data:image/png;base64,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`,
     planTeirs: [
       {
+        id: 17,
         name: "家庭計畫",
         accountCount: 3,
-        priceMap: {
-          monthly: 79,
-          yearly: null,
-          ccy: "HKD",
-          symbol: "$",
-        },
+        offers: [
+          {
+            ccy: "HKD",
+            symbol: "$",
+            frequencyOption: {
+              value: PlanFrequency.MONTHLY,
+              label: "Monthly",
+            },
+            price: 79,
+          },
+        ],
       },
     ],
     tags: ["🎵 Music"],
@@ -379,14 +536,20 @@ export const serviceDb: ServiceData[] = [
     iconImage: `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLjjW3dPt4GsPTUdPrzh8_A9iH0hKsrkyw5g&usqp=CAU`,
     planTeirs: [
       {
+        id: 18,
         name: "家庭計畫",
         accountCount: 3,
-        priceMap: {
-          monthly: 66,
-          yearly: null,
-          ccy: "HKD",
-          symbol: "$",
-        },
+        offers: [
+          {
+            ccy: "HKD",
+            symbol: "$",
+            frequencyOption: {
+              value: PlanFrequency.MONTHLY,
+              label: "Monthly",
+            },
+            price: 66,
+          },
+        ],
       },
     ],
     tags: ["🎵 Music"],
