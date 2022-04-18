@@ -136,6 +136,7 @@ export const ServiceCard: FC<{ service: ServiceData }> = ({ service }) => {
             variant="gradient"
             color="yellow"
             radius="md"
+            size="xl"
             gradient={{
               from: "orange",
               to: "yellow",

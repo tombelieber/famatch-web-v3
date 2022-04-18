@@ -10,12 +10,11 @@ type StatButtonProps = {
 const StatButton: FC<StatButtonProps> = ({ count, label, color, ...props }) => {
   return (
     <Box
-      sx={({ colors, spacing, radius }) => ({
-        paddingTop: spacing.xs,
-        paddingBottom: spacing.xs,
+      sx={({ colors, radius }) => ({
         borderRadius: radius.md,
         flex: 1,
         cursor: "pointer",
+        // eslint-disable-next-line security/detect-object-injection
         border: `1px solid ${colors[color][1]}`,
       })}
       {...props}
