@@ -5,14 +5,14 @@ import {
   Modal,
   Stack,
   Stepper,
-  Text,
-  TextInput,
   Title,
 } from "@mantine/core";
-import { FC, PropsWithChildren, useState } from "react";
-import { formatCurrency } from "../../app/utils";
+import { FC, useEffect, useState } from "react";
+import { FormProvider, useForm } from "react-hook-form";
 import { ServiceData } from "../../lib/common/constant";
-import useEnrollForm, { RoleOption } from "./useEnrollForm";
+import MemberForm from "./MemberForm";
+import OwnerForm from "./OwnerForm";
+import { EnrollForm, RoleOption } from "./useEnrollForm";
 
 const ICON_SIZE = 60;
 const RoleOptions: RoleOption[] = [
@@ -33,19 +33,21 @@ type EnrollModalProps = {
   service: ServiceData;
 };
 
+const getDefaultValue = (service: ServiceData): Partial<EnrollForm> => ({
+  tier: service.planTeirs[0].id.toString(),
+  frequency: service.planTeirs[0].offers[0].frequencyOption.value,
+});
+
 const EnrollModal: FC<EnrollModalProps> = ({ opened, onClose, service }) => {
   const [active, setActive] = useState(0);
-  const {
-    FrequencySelect,
-    PlanTierSelect,
-    VacancySelect,
-    activeOffer,
-    activePlanTier,
-    activeQuota,
-    formProps,
-  } = useEnrollForm(service);
 
-  const { watch, setValue } = formProps;
+  const methods = useForm<EnrollForm>({
+    defaultValues: getDefaultValue(service),
+  });
+  const { watch, setValue, reset } = methods;
+  useEffect(() => {
+    reset(getDefaultValue(service));
+  }, [service]);
 
   const nextStep = () =>
     setActive((current) => (current < 3 ? current + 1 : current));
@@ -60,49 +62,12 @@ const EnrollModal: FC<EnrollModalProps> = ({ opened, onClose, service }) => {
     onClose();
   };
 
-  const OwnerForm: FC = () => (
-    <>
-      {activeQuota && (
-        <PriceSection description="預期收款">
-          {`${formatCurrency.format(
-            (activeOffer.price / activePlanTier.accountCount) *
-              parseInt(activeQuota),
-          )} / ${activeOffer.frequencyOption.label.toLocaleLowerCase()}`}
-        </PriceSection>
-      )}
-
-      <PlanTierSelect />
-      <VacancySelect />
-      <TextInput
-        label="收款用FPS"
-        placeholder="手提電話號碼、電郵地址、FPS 識別碼（Proxy ID）"
-      />
-      <Button>Create Room</Button>
-    </>
-  );
-
-  const MemberForm: FC = () => (
-    <>
-      <PriceSection>
-        {`${formatCurrency.format(
-          activeOffer.price / activePlanTier.accountCount,
-        )} / ${activeOffer.frequencyOption.label.toLocaleLowerCase()}`}
-      </PriceSection>
-
-      <PlanTierSelect />
-      <FrequencySelect />
-
-      <Button>Add to Waitlist</Button>
-    </>
-  );
-
   return (
     <Modal
       centered
       opened={opened}
       onClose={handleClose}
       withCloseButton={false}
-      // size="lg"
     >
       {/* Modal content */}
       <Stepper
@@ -142,7 +107,13 @@ const EnrollModal: FC<EnrollModalProps> = ({ opened, onClose, service }) => {
               <Title>{service.title}</Title>
             </Stack>
 
-            {watch("role.value") === "owner" ? <OwnerForm /> : <MemberForm />}
+            <FormProvider {...methods}>
+              {watch("role.value") === "owner" ? (
+                <OwnerForm service={service} />
+              ) : (
+                <MemberForm service={service} />
+              )}
+            </FormProvider>
           </Stack>
         </Stepper.Completed>
       </Stepper>
@@ -151,20 +122,3 @@ const EnrollModal: FC<EnrollModalProps> = ({ opened, onClose, service }) => {
 };
 
 export default EnrollModal;
-
-const PriceSection: FC<
-  PropsWithChildren<{
-    description?: string;
-  }>
-> = ({ children, description }) => (
-  <div>
-    <Text size="xl" weight={700} sx={{ lineHeight: 1 }}>
-      {children}
-    </Text>
-    {description && (
-      <Text size="sm" color="dimmed" weight={500} sx={{ lineHeight: 1 }} mt={3}>
-        {description}
-      </Text>
-    )}
-  </div>
-);

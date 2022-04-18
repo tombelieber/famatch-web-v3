@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { FC, useState } from "react";
 import { ServiceData } from "../../lib/common/constant";
 import { ROUTES } from "../../lib/router/routes";
-import EnrollModal from "./EnrollModal";
+import EnrollModal from "../EnrollmentForm/EnrollModal";
 import StatButton from "./StatButton";
 
 const useStyles = createStyles((theme) => ({

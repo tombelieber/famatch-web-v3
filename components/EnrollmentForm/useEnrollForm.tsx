@@ -1,7 +1,7 @@
 import { Select } from "@mantine/core";
 import { minBy } from "lodash";
-import { FC, useEffect } from "react";
-import { Controller, useForm } from "react-hook-form";
+import { FC } from "react";
+import { Controller, useFormContext } from "react-hook-form";
 import { Option } from "../../app/types";
 import { formatCurrency, rangeFrom } from "../../app/utils";
 import { PlanOffer, ServiceData } from "../../lib/common/constant";
@@ -16,35 +16,18 @@ export type EnrollForm = {
   frequency: string;
 };
 
-const getDefaultValue = (service: ServiceData): Partial<EnrollForm> => ({
-  tier: service.planTeirs[0].id.toString(),
-  frequency: service.planTeirs[0].offers[0].frequencyOption.value,
-});
-
 export default function useEnrollForm(service: ServiceData) {
-  // derive avaiable monthly, yearly or both from PlanTier object
-  // get yearly price if yearly is not null, else, multiple month x 12
-  const formProps = useForm<EnrollForm>({
-    defaultValues: getDefaultValue(service),
-  });
-  const { setValue, watch, reset, control } = formProps;
-
-  useEffect(() => {
-    reset(getDefaultValue(service));
-  }, [service]);
+  const { setValue, watch, control } = useFormContext<EnrollForm>();
 
   // * active selected fields
   const activePlanTier =
     service.planTeirs.find((e) => e.id.toString() === watch("tier")) ??
     service.planTeirs[0];
-
   const activeOffer =
     activePlanTier.offers.find(
       (e) => e.frequencyOption.value === watch("frequency"),
     ) ?? service.planTeirs[0].offers[0];
-
   const activeQuota = watch("quota");
-
   const planTierOptions = service.planTeirs.map<Option>(
     ({ name, id, accountCount, offers }) => {
       const minPriceOffer = minBy(offers, (e) => e.price) ?? offers[0];
@@ -63,6 +46,7 @@ export default function useEnrollForm(service: ServiceData) {
     },
   );
 
+  // * values
   const maxQuota = (activePlanTier.accountCount ?? 2) - 1;
 
   const vacancyOptions = rangeFrom(1, maxQuota).map<Option>((value) => ({
@@ -157,6 +141,5 @@ export default function useEnrollForm(service: ServiceData) {
     PlanTierSelect,
     VacancySelect,
     FrequencySelect,
-    formProps,
   };
 }
