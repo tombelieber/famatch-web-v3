@@ -120,7 +120,6 @@ export default function useEnrollForm(service: ServiceData) {
           description={
             frequencyOptions.length === 1 ? "only monthly pricing tier" : ""
           }
-          disabled={frequencyOptions.length === 1}
           label="Subscribe Frequency"
           placeholder="e.g. monthly, yearly"
           data={frequencyOptions}
