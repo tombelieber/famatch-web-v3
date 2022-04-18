@@ -73,7 +73,7 @@ export const serviceDb: ServiceData[] = [
             ccy: "HKD",
             frequencyOption: {
               value: PlanFrequency.YEARLY,
-              label: "Yearly",
+              label: "年",
             },
             price: 295,
           },
@@ -89,7 +89,7 @@ export const serviceDb: ServiceData[] = [
             ccy: "HKD",
             frequencyOption: {
               value: PlanFrequency.YEARLY,
-              label: "Yearly",
+              label: "年",
             },
             price: 575,
           },
@@ -118,7 +118,7 @@ export const serviceDb: ServiceData[] = [
             ccy: "HKD",
             frequencyOption: {
               value: PlanFrequency.MONTHLY,
-              label: "Monthly",
+              label: "月",
             },
             price: 72,
           },
@@ -148,7 +148,7 @@ export const serviceDb: ServiceData[] = [
             ccy: "HKD",
             frequencyOption: {
               value: PlanFrequency.MONTHLY,
-              label: "Monthly",
+              label: "月",
             },
             price: 78,
           },
@@ -164,7 +164,7 @@ export const serviceDb: ServiceData[] = [
             ccy: "HKD",
             frequencyOption: {
               value: PlanFrequency.MONTHLY,
-              label: "Monthly",
+              label: "月",
             },
             price: 98,
           },
@@ -193,7 +193,7 @@ export const serviceDb: ServiceData[] = [
             ccy: "HKD",
             frequencyOption: {
               value: PlanFrequency.MONTHLY,
-              label: "Monthly",
+              label: "月",
             },
             price: 78,
           },
@@ -209,7 +209,7 @@ export const serviceDb: ServiceData[] = [
             ccy: "HKD",
             frequencyOption: {
               value: PlanFrequency.MONTHLY,
-              label: "Monthly",
+              label: "月",
             },
             price: 93,
           },
@@ -238,7 +238,7 @@ export const serviceDb: ServiceData[] = [
             ccy: "HKD",
             frequencyOption: {
               value: PlanFrequency.MONTHLY,
-              label: "Monthly",
+              label: "月",
             },
             price: 98,
           },
@@ -268,7 +268,7 @@ export const serviceDb: ServiceData[] = [
             ccy: "HKD",
             frequencyOption: {
               value: PlanFrequency.MONTHLY,
-              label: "Monthly",
+              label: "月",
             },
             price: 23,
           },
@@ -284,7 +284,7 @@ export const serviceDb: ServiceData[] = [
             ccy: "HKD",
             frequencyOption: {
               value: PlanFrequency.MONTHLY,
-              label: "Monthly",
+              label: "月",
             },
             price: 78,
           },
@@ -313,7 +313,7 @@ export const serviceDb: ServiceData[] = [
             ccy: "HKD",
             frequencyOption: {
               value: PlanFrequency.MONTHLY,
-              label: "Monthly",
+              label: "月",
             },
             price: 15,
           },
@@ -322,7 +322,7 @@ export const serviceDb: ServiceData[] = [
             ccy: "HKD",
             frequencyOption: {
               value: PlanFrequency.YEARLY,
-              label: "Yearly",
+              label: "年",
             },
             price: 150,
           },
@@ -338,7 +338,7 @@ export const serviceDb: ServiceData[] = [
             ccy: "HKD",
             frequencyOption: {
               value: PlanFrequency.MONTHLY,
-              label: "Monthly",
+              label: "月",
             },
             price: 23,
           },
@@ -347,7 +347,7 @@ export const serviceDb: ServiceData[] = [
             ccy: "HKD",
             frequencyOption: {
               value: PlanFrequency.YEARLY,
-              label: "Yearly",
+              label: "年",
             },
             price: 230,
           },
@@ -363,7 +363,7 @@ export const serviceDb: ServiceData[] = [
             ccy: "HKD",
             frequencyOption: {
               value: PlanFrequency.MONTHLY,
-              label: "Monthly",
+              label: "月",
             },
             price: 79,
           },
@@ -372,7 +372,7 @@ export const serviceDb: ServiceData[] = [
             ccy: "HKD",
             frequencyOption: {
               value: PlanFrequency.YEARLY,
-              label: "Yearly",
+              label: "年",
             },
             price: 799,
           },
@@ -400,7 +400,7 @@ export const serviceDb: ServiceData[] = [
             ccy: "HKD",
             frequencyOption: {
               value: PlanFrequency.MONTHLY,
-              label: "Monthly",
+              label: "月",
             },
             price: 88,
           },
@@ -428,7 +428,7 @@ export const serviceDb: ServiceData[] = [
             ccy: "HKD",
             frequencyOption: {
               value: PlanFrequency.MONTHLY,
-              label: "Monthly",
+              label: "月",
             },
             price: 38,
           },
@@ -455,7 +455,7 @@ export const serviceDb: ServiceData[] = [
             ccy: "HKD",
             frequencyOption: {
               value: PlanFrequency.MONTHLY,
-              label: "Monthly",
+              label: "月",
             },
             price: 73,
           },
@@ -464,7 +464,7 @@ export const serviceDb: ServiceData[] = [
             ccy: "HKD",
             frequencyOption: {
               value: PlanFrequency.YEARLY,
-              label: "Yearly",
+              label: "年",
             },
             price: 738,
           },
@@ -491,7 +491,7 @@ export const serviceDb: ServiceData[] = [
             symbol: "$",
             frequencyOption: {
               value: PlanFrequency.MONTHLY,
-              label: "Monthly",
+              label: "月",
             },
             price: 79,
           },
@@ -518,7 +518,7 @@ export const serviceDb: ServiceData[] = [
             symbol: "$",
             frequencyOption: {
               value: PlanFrequency.MONTHLY,
-              label: "Monthly",
+              label: "月",
             },
             price: 79,
           },
@@ -545,7 +545,7 @@ export const serviceDb: ServiceData[] = [
             symbol: "$",
             frequencyOption: {
               value: PlanFrequency.MONTHLY,
-              label: "Monthly",
+              label: "月",
             },
             price: 66,
           },

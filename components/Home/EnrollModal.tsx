@@ -247,10 +247,7 @@ const EnrollModal: FC<EnrollModalProps> = ({
         contentPadding="lg"
       >
         <Stepper.Step
-          label="First step"
-          description={
-            watch("role") ? watch("role").label : "Recruiter or seeker?"
-          }
+          label={watch("role") ? watch("role").label : "Recruiter or seeker?"}
         >
           <Group grow position="apart" sx={{ height: 120 }}>
             {RoleOptions.map((option) => (
