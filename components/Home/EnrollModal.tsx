@@ -11,7 +11,7 @@ import {
   Title,
 } from "@mantine/core";
 import { minBy } from "lodash";
-import { FC, useEffect, useState } from "react";
+import { FC, PropsWithChildren, useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { Option } from "../../app/types";
 import { formatCurrency, rangeFrom } from "../../app/utils";
@@ -81,6 +81,8 @@ const EnrollModal: FC<EnrollModalProps> = ({
     activePlanTier.offers.find(
       (e) => e.frequencyOption.value === watch("frequency"),
     ) ?? service.planTeirs[0].offers[0];
+
+  const activeQuota = watch("quota");
 
   const planTierOptions = service.planTeirs.map<Option>(
     ({ name, id, accountCount, offers }) => {
@@ -202,8 +204,40 @@ const EnrollModal: FC<EnrollModalProps> = ({
     />
   );
 
+  const PriceSection: FC<
+    PropsWithChildren<{
+      description?: string;
+    }>
+  > = ({ children, description }) => (
+    <div>
+      <Text size="xl" weight={700} sx={{ lineHeight: 1 }}>
+        {children}
+      </Text>
+      {description && (
+        <Text
+          size="sm"
+          color="dimmed"
+          weight={500}
+          sx={{ lineHeight: 1 }}
+          mt={3}
+        >
+          {description}
+        </Text>
+      )}
+    </div>
+  );
+
   const OwnerForm: FC = () => (
     <>
+      {activeQuota && (
+        <PriceSection description="預期收款">
+          {`${formatCurrency.format(
+            (activeOffer.price / activePlanTier.accountCount) *
+              parseInt(activeQuota),
+          )} / ${activeOffer.frequencyOption.label.toLocaleLowerCase()}`}
+        </PriceSection>
+      )}
+
       <PlanTierSelect />
       <VacancySelect />
       <TextInput
@@ -214,15 +248,13 @@ const EnrollModal: FC<EnrollModalProps> = ({
     </>
   );
 
-  const MemberForm = () => (
+  const MemberForm: FC = () => (
     <>
-      <div>
-        <Text size="xl" weight={700} sx={{ lineHeight: 1 }}>
-          {`${formatCurrency.format(
-            activeOffer.price / activePlanTier.accountCount,
-          )} / ${activeOffer.frequencyOption.label.toLocaleLowerCase()}`}
-        </Text>
-      </div>
+      <PriceSection>
+        {`${formatCurrency.format(
+          activeOffer.price / activePlanTier.accountCount,
+        )} / ${activeOffer.frequencyOption.label.toLocaleLowerCase()}`}
+      </PriceSection>
 
       <PlanTierSelect />
       <FrequencySelect />
